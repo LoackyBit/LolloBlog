@@ -6,7 +6,19 @@
         <description>Recent content on My New Hugo Site</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 30 May 2022 22:02:00 +0000</lastBuildDate><atom:link href="https://example.org/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 30 May 2024 22:02:00 +0000</lastBuildDate><atom:link href="https://example.org/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>ciaa</title>
+        <link>https://example.org/posts/seconda-prova/</link>
+        <pubDate>Thu, 30 May 2024 22:02:00 +0000</pubDate>
+        
+        <guid>https://example.org/posts/seconda-prova/</guid>
+        <description>&lt;p&gt;prova sjsjsjsjs
+sk
+sksksk
+![[Pasted image 20250605192432.png]]&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>ciaa</title>
         <link>https://example.org/posts/prova/</link>
         <pubDate>Mon, 30 May 2022 22:02:00 +0000</pubDate>
@@ -27,18 +39,6 @@
 		data-flex-basis=&#34;184px&#34;
 	
 &gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title></title>
-        <link>https://example.org/posts/seconda-prova/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://example.org/posts/seconda-prova/</guid>
-        <description>&lt;p&gt;prova sjsjsjsjs
-sk
-sksksk
-![[Pasted image 20250605192432.png]]&lt;/p&gt;
 </description>
         </item>
         

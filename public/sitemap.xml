@@ -3,21 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://example.org/tags/blog/</loc>
-    <lastmod>2022-05-30T22:02:00+00:00</lastmod>
+    <lastmod>2024-05-30T22:02:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.org/posts/seconda-prova/</loc>
+    <lastmod>2024-05-30T22:02:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.org/</loc>
+    <lastmod>2024-05-30T22:02:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.org/posts/</loc>
+    <lastmod>2024-05-30T22:02:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.org/tags/</loc>
+    <lastmod>2024-05-30T22:02:00+00:00</lastmod>
   </url><url>
     <loc>https://example.org/posts/prova/</loc>
     <lastmod>2022-05-30T22:02:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.org/</loc>
-    <lastmod>2022-05-30T22:02:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.org/posts/</loc>
-    <lastmod>2022-05-30T22:02:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.org/tags/</loc>
-    <lastmod>2022-05-30T22:02:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.org/posts/seconda-prova/</loc>
   </url><url>
     <loc>https://example.org/categories/</loc>
   </url>
