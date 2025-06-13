@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Thu, 30 May 2024 22:02:00 +0000</lastBuildDate><atom:link href="https://example.org/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>ciaa</title>
+        <title>seconda</title>
         <link>https://example.org/posts/seconda-prova/</link>
         <pubDate>Thu, 30 May 2024 22:02:00 +0000</pubDate>
         
@@ -15,20 +15,7 @@
         <description>&lt;p&gt;prova sjsjsjsjs
 sk
 sksksk
-&lt;img src=&#34;https://example.org/posts/seconda-prova/Pasted-image-20250605192432.png&#34;
-	width=&#34;1502&#34;
-	height=&#34;840&#34;
-	srcset=&#34;https://example.org/posts/seconda-prova/Pasted-image-20250605192432_hu_753dc59d933db8fb.png 480w, https://example.org/posts/seconda-prova/Pasted-image-20250605192432_hu_6cc80f9408e0f07d.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Pasted-image-20250605192432.png&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;178&#34;
-		data-flex-basis=&#34;429px&#34;
-	
-&gt;&lt;/p&gt;
+![[Pasted image 20250605192432.png]]&lt;/p&gt;
 </description>
         </item>
         <item>
