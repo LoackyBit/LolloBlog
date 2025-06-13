@@ -6,7 +6,7 @@ tags:
   - blog
   - tutorial
 description: A step-by-step guide on how I created my blog using Obsidian, Hugo, GitHub, and Vercel, with a guide to using the Stack theme.
-image: "'/Users/lorenzo/Library/Mobile Documents/iCloud~md~obsidian/Documents/Ken vault/99 - Meta/Clipboard/Pasted image 20250605192419.png'"
+image: /Users/lorenzo/Library/Mobile Documents/iCloud~md~obsidian/Documents/Ken vault/99 - Meta/Clipboard/Pasted image 20250605192419.png
 ---
 # How I Built My Blog with Hugo and the Stack Theme
 
@@ -203,8 +203,8 @@ description : "A short description"
 ---
 ```
 
-- Set `draft = false` to publish the post.
-- Use `featuredImage` to add a cover image
+- Set `draft : false` to publish the post.
+- Use `image` to add a cover image
 
 ### Testing
 
