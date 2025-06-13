@@ -54,7 +54,7 @@ echo "Step 5 completato: Commit eseguito."
 
 # Step 6: Push sul branch principale (per Vercel)
 echo "Step 6: Push sul branch principale per Vercel..."
-git push origin master
+git push -u origin master
 if [ $? -ne 0 ]; then
     echo "Errore: Push sul branch principale fallito. Controlla la connessione SSH o il repository."
     exit 1
