@@ -3,10 +3,11 @@ title: How I Built My Blog with Hugo and the Stack Theme
 date: 2025-06-13
 draft: false
 tags:
-  - blog
-  - tutorial
-description: A step-by-step guide on how I created my blog using Obsidian, Hugo, GitHub, and Vercel, with a guide to using the Stack theme.
-image: Pasted image 20250613120635.png
+- blog
+- tutorial
+description: A step-by-step guide on how I created my blog using Obsidian, Hugo, GitHub,
+  and Vercel, with a guide to using the Stack theme.
+image: Pasted-image-20250613120635.png
 ---
 # How I Built My Blog with Hugo and the Stack Theme
 

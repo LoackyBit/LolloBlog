@@ -20,12 +20,13 @@ def parse_front_matter(content):
     if match:
         try:
             front_matter = yaml.safe_load(match.group(1)) or {}
-            return front_matter, match.group(0), match.group(1)
-        except yaml.YAMLError:
-            return {}, None, None
-    return {}, None, None
+            return front_matter, match.group(0)
+        except yaml.YAMLError as e:
+            print(f"Error parsing YAML front matter: {e}")
+            return {}, None
+    return {}, None
 
-def update_front_matter(content, front_matter, original_front_matter, original_yaml):
+def update_front_matter(content, front_matter, original_front_matter):
     """Update the front matter with modified image name and return new content."""
     if 'image' in front_matter and front_matter['image']:
         image_name = front_matter['image']
@@ -33,10 +34,10 @@ def update_front_matter(content, front_matter, original_front_matter, original_y
         if image_name != new_image_name:
             front_matter['image'] = new_image_name
             # Regenerate YAML front matter
-            new_yaml = yaml.dump(front_matter, allow_unicode=True, sort_keys=False)
+            new_yaml = yaml.dump(front_matter, allow_unicode=True, sort_keys=False, default_flow_style=False)
             # Replace original front matter with updated version
             new_front_matter = f"---\n{new_yaml}---\n"
-            return re.sub(FRONT_MATTER_REGEX, new_front_matter, content, 1)
+            return content.replace(original_front_matter, new_front_matter)
     return content
 
 # Elabora ogni file markdown nella cartella post di Obsidian
@@ -58,7 +59,7 @@ for filename in os.listdir(OBSIDIAN_POST_DIR):
             content = f.read()
 
         # Estrai il front matter
-        front_matter, original_front_matter, original_yaml = parse_front_matter(content)
+        front_matter, original_front_matter = parse_front_matter(content)
         
         # Gestisci l'immagine specificata nel parametro 'image' del front matter
         if 'image' in front_matter and front_matter['image']:
@@ -71,9 +72,11 @@ for filename in os.listdir(OBSIDIAN_POST_DIR):
             if os.path.exists(src_path):
                 shutil.copy2(src_path, dst_path)
                 print(f"Copied featured image: {new_image_name} to {bundle_dir}")
+            else:
+                print(f"Warning: Featured image {image_name} not found in {ATTACHMENTS_DIR}")
 
         # Aggiorna il front matter con il nome dell'immagine modificato
-        content = update_front_matter(content, front_matter, original_front_matter, original_yaml)
+        content = update_front_matter(content, front_matter, original_front_matter)
 
         # Trova e sostituisci i link delle immagini nel contenuto
         def replace_image(match):
@@ -85,6 +88,9 @@ for filename in os.listdir(OBSIDIAN_POST_DIR):
             dst_path = os.path.join(bundle_dir, new_image_name)
             if os.path.exists(src_path):
                 shutil.copy2(src_path, dst_path)
+                print(f"Copied content image: {new_image_name} to {bundle_dir}")
+            else:
+                print(f"Warning: Content image {image_name} not found in {ATTACHMENTS_DIR}")
             # Riformatta il link per Stack (solo un !, percorso relativo)
             return f"![{new_image_name}]({new_image_name})"
 
