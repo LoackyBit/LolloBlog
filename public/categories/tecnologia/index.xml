@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Tecnologia on LolloBlog</title>
+        <link>https://example.com/categories/tecnologia/</link>
+        <description>Recent content in Tecnologia on LolloBlog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>it</language>
+        <copyright>Lorenzo</copyright>
+        <lastBuildDate>Fri, 13 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/categories/tecnologia/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>I Migliori Strumenti per Sviluppatori nel 2025</title>
+        <link>https://example.com/posts/strumenti-sviluppatori-2025/</link>
+        <pubDate>Fri, 13 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/posts/strumenti-sviluppatori-2025/</guid>
+        <description>&lt;h1 id=&#34;i-migliori-strumenti-per-sviluppatori-nel-2025&#34;&gt;I Migliori Strumenti per Sviluppatori nel 2025
+&lt;/h1&gt;&lt;p&gt;Essere produttivi come sviluppatori significa scegliere i giusti strumenti. Ecco la mia selezione dei migliori strumenti per il 2025.&lt;/p&gt;
+&lt;h2 id=&#34;editor-di-codice&#34;&gt;Editor di Codice
+&lt;/h2&gt;&lt;h3 id=&#34;visual-studio-code&#34;&gt;Visual Studio Code
+&lt;/h3&gt;&lt;p&gt;Il re degli editor di codice, con:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Estensioni per qualsiasi linguaggio&lt;/li&gt;
+&lt;li&gt;Integrazione Git nativa&lt;/li&gt;
+&lt;li&gt;Debugging avanzato&lt;/li&gt;
+&lt;li&gt;Supporto per container di sviluppo&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;obsidian&#34;&gt;Obsidian
+&lt;/h3&gt;&lt;p&gt;Perfetto per:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Prendere appunti di programmazione&lt;/li&gt;
+&lt;li&gt;Documentare progetti&lt;/li&gt;
+&lt;li&gt;Creare knowledge base personali&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;strumenti-di-versioning&#34;&gt;Strumenti di Versioning
+&lt;/h2&gt;&lt;h3 id=&#34;git--github&#34;&gt;Git + GitHub
+&lt;/h3&gt;&lt;p&gt;La combinazione vincente per:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Controllo versione distribuito&lt;/li&gt;
+&lt;li&gt;Collaborazione in team&lt;/li&gt;
+&lt;li&gt;CI/CD integrato&lt;/li&gt;
+&lt;li&gt;Hosting di repository&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;deployment-e-hosting&#34;&gt;Deployment e Hosting
+&lt;/h2&gt;&lt;h3 id=&#34;vercel&#34;&gt;Vercel
+&lt;/h3&gt;&lt;p&gt;Ideale per:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Deploy automatico da GitHub&lt;/li&gt;
+&lt;li&gt;Siti statici e applicazioni Next.js&lt;/li&gt;
+&lt;li&gt;Edge functions&lt;/li&gt;
+&lt;li&gt;Preview deployments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;hostinger&#34;&gt;Hostinger
+&lt;/h3&gt;&lt;p&gt;Ottimo per:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hosting web tradizionale&lt;/li&gt;
+&lt;li&gt;WordPress&lt;/li&gt;
+&lt;li&gt;Domini personalizzati&lt;/li&gt;
+&lt;li&gt;Prezzi competitivi&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;generatori-di-siti-statici&#34;&gt;Generatori di Siti Statici
+&lt;/h2&gt;&lt;h3 id=&#34;hugo&#34;&gt;Hugo
+&lt;/h3&gt;&lt;p&gt;Veloce e potente per:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Blog e siti di documentazione&lt;/li&gt;
+&lt;li&gt;Supporto multilingue nativo&lt;/li&gt;
+&lt;li&gt;Temi personalizzabili&lt;/li&gt;
+&lt;li&gt;Build incredibilmente veloci&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conclusione&#34;&gt;Conclusione
+&lt;/h2&gt;&lt;p&gt;La scelta degli strumenti giusti può fare la differenza nella produttività di uno sviluppatore. Questi sono i miei preferiti per il 2025!&lt;/p&gt;
+&lt;p&gt;Quale strumento useresti tu? Fammelo sapere nei commenti!&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

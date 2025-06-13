@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Hugo: Build Site",
+			"type": "shell",
+			"command": "hugo",
+			"args": [
+				"--buildDrafts",
+				"--buildFuture"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"isBackground": false
+		}
+	]
+}
