@@ -154,7 +154,7 @@
 
 
                 <time class="article-time--reading">
-                    9 minute read
+                    6 minute read
                 </time>
             </div>
         
@@ -186,93 +186,6 @@
 .</p>
 <h3 id="1-writing-posts-with-obsidian">1. Writing Posts with Obsidian
 </h3><p>I use <strong>Obsidian</strong>, a powerful note-taking app, to write my blog posts in markdown. All posts are stored in a <code>post</code> folder within my Obsidian vault. Each post starts with a front matter block, which includes metadata like title, date, and tags. For example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span><span style="color:#f92672">title </span>: <span style="color:#e6db74">&#34;My First Post&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">date </span>: <span style="color:#e6db74">2025-06-13</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">draft </span>: <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">tags </span>: [<span style="color:#e6db74">&#34;test&#34;</span>, <span style="color:#e6db74">&#34;blog&#34;</span>]
-</span></span><span style="display:flex;"><span>---
-</span></span></code></pre></div><p>Obsidian keeps my notes private, and only files in the <code>post</code> folder are published. To ensure images work, I use a Python script to sync images from Obsidian’s <code>attachments</code> folder to Hugo’s <code>static/images</code> folder.</p>
-<h3 id="2-generating-the-site-with-hugo">2. Generating the Site with Hugo
-</h3><p><strong>Hugo</strong> is a static site generator that transforms markdown files into a website. Here’s how I set it up:</p>
-<ul>
-<li>
-<p><strong>Installation</strong>: I installed Hugo on my Mac using Homebrew (<code>brew install hugo</code>). I also installed Git and Go as prerequisites.</p>
-</li>
-<li>
-<p><strong>Site Creation</strong>: I created a new Hugo site with `hugo new site BlogName.</p>
-</li>
-<li>
-<p><strong>Theme Setup</strong>: I chose the <strong>Stack</strong> theme (<a class="link" href="https://stack.jimmycai.com/"  target="_blank" rel="noopener"
-    >https://stack.jimmycai.com/</a>) for its clean, card-style design. I installed it with:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git submodule add https://github.com/CaiJimmy/hugo-theme-stack themes/hugo-theme-stack
-</span></span></code></pre></div></li>
-<li>
-<p><strong>Configuration</strong>: I configured Hugo in <code>hugo.toml</code> to use the Stack theme:</p>
-</li>
-</ul>
-<p>baseURL = &ldquo;<a class="link" href="https://example.com/%22"  target="_blank" rel="noopener"
-    >https://example.com/"</a> # Replace with your domain languageCode = &ldquo;en-us&rdquo; title = &ldquo;My Blog&rdquo; theme = &ldquo;hugo-theme-stack&rdquo;</p>
-<p>[params]<br>
-mainSections = [&ldquo;post&rdquo;]</p>
-<p>Alright, I’ll switch to English as requested. Below, I’ll create the first real blog post in English, explaining how you built your site and incorporating a guide to using the <strong>Stack</strong> theme (<a class="link" href="https://stack.jimmycai.com/config/%29"  target="_blank" rel="noopener"
-    >https://stack.jimmycai.com/config/)</a>, based on the tutorial by NetworkChuck and the provided documentation. The post will be a markdown file with the appropriate front matter for the Stack theme, written in a clear and engaging style.</p>
-<hr>
-<h3 id="post-content">Post Content
-</h3><p>The post will cover:</p>
-<ol>
-<li>The process of building the site using Obsidian, Hugo, GitHub, and Hostinger (based on the tutorial).</li>
-<li>A guide to configuring and using the Stack theme, referencing its documentation (<a class="link" href="https://stack.jimmycai.com/config/%29"  target="_blank" rel="noopener"
-    >https://stack.jimmycai.com/config/)</a>.</li>
-<li>Steps for creating and publishing a post, including front matter details and file synchronization.</li>
-</ol>
-<hr>
-<h3 id="steps-to-create-the-post">Steps to Create the Post
-</h3><ol>
-<li>
-<p><strong>Create the Post in Obsidian</strong>:</p>
-<ul>
-<li>Open Obsidian and navigate to the <code>post</code> folder in your vault.</li>
-<li>Create a new markdown file, e.g., <code>my-first-post.md</code>.</li>
-<li>Add the front matter required by the Stack theme and the post content.</li>
-</ul>
-</li>
-<li>
-<p><strong>Sync the Post with Hugo</strong>:</p>
-<ul>
-<li>Use <code>rsync</code> to copy the file from Obsidian’s <code>post</code> folder to Hugo’s <code>content/post</code> folder.</li>
-<li>Run the Hugo server to test the post locally.</li>
-</ul>
-</li>
-<li>
-<p><strong>Publish the Post</strong>:</p>
-<ul>
-<li>Generate the site with <code>hugo</code>.</li>
-<li>Commit and push to GitHub, including the <code>hostinger</code> branch for Hostinger.</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h3 id="markdown-file-for-the-post">Markdown File for the Post
-</h3><p>Here’s the post content, with the front matter in TOML format (as the Stack documentation notes a future migration to TOML) and the body in English. The post describes the site-building process and includes a guide to using the Stack theme.</p>
-<p>+++
-title = &ldquo;How I Built My Blog with Hugo and the Stack Theme&rdquo;
-date = 2025-06-13
-draft = false
-tags = [&ldquo;blog&rdquo;, &ldquo;hugo&rdquo;, &ldquo;stack&rdquo;, &ldquo;tutorial&rdquo;]
-description = &ldquo;A step-by-step guide on how I created my blog using Obsidian, Hugo, GitHub, and Hostinger, with a guide to using the Stack theme.&rdquo;
-featuredImage = &ldquo;/images/cover-image.jpg&rdquo;  # Cover image (optional, add if you have one)
-+++</p>
-<h1 id="how-i-built-my-blog-with-hugo-and-the-stack-theme-1">How I Built My Blog with Hugo and the Stack Theme
-</h1><p>Hello everyone! In this post, I’ll share how I built my blog using <strong>Obsidian</strong>, <strong>Hugo</strong>, <strong>GitHub</strong>, and <strong>Hostinger</strong>, following a tutorial by NetworkChuck and customizing it with the <strong>Stack</strong> theme (<a class="link" href="https://stack.jimmycai.com/%29"  target="_blank" rel="noopener"
-    >https://stack.jimmycai.com/)</a>. I’ll also guide you through configuring the Stack theme to create a sleek and functional blog.</p>
-<h2 id="why-a-blog-1">Why a Blog?
-</h2><p>Inspired by <em>Building a Second Brain</em> by Tiago Forte, I started this blog to share my ideas and organize my thoughts in a way that’s accessible and valuable. My goal is to express what I’m learning and provide insights for myself, my friends, family, and anyone interested in my perspective.</p>
-<h2 id="how-i-built-the-site-1">How I Built the Site
-</h2><p>Here are the main steps I followed to create my blog, adapted from NetworkChuck’s tutorial (<a class="link" href="https://youtu.be/dnE7c0ELEH8%29"  target="_blank" rel="noopener"
-    >https://youtu.be/dnE7c0ELEH8)</a>.</p>
-<h3 id="1-writing-posts-with-obsidian-1">1. Writing Posts with Obsidian
-</h3><p>I use <strong>Obsidian</strong>, a powerful note-taking app, to write my blog posts in markdown. All posts are stored in a <code>post</code> folder within my Obsidian vault. Each post starts with a front matter block, which includes metadata like title, date, and tags. For example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+++</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;My First Post&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">date</span> = <span style="color:#ae81ff">2025-06-13</span>
@@ -280,7 +193,7 @@ featuredImage = &ldquo;/images/cover-image.jpg&rdquo;  # Cover image (optional, 
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">tags</span> = [<span style="color:#e6db74">&#34;test&#34;</span>, <span style="color:#e6db74">&#34;blog&#34;</span>]
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+++</span>
 </span></span></code></pre></div><p>Obsidian keeps my notes private, and only files in the <code>post</code> folder are published. To ensure images work (though I’m still troubleshooting this), I plan to use a Python script to sync images from Obsidian’s <code>attachments</code> folder to Hugo’s <code>static/images</code> folder.</p>
-<h3 id="2-generating-the-site-with-hugo-1">2. Generating the Site with Hugo
+<h3 id="2-generating-the-site-with-hugo">2. Generating the Site with Hugo
 </h3><p><strong>Hugo</strong> is a static site generator that transforms markdown files into a website. Here’s how I set it up:</p>
 <ul>
 <li>
