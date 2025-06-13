@@ -2,35 +2,49 @@ import os
 import re
 import shutil
 
-# Paths
-posts_dir = "/Users/lorenzo/Documents/GitHub/LolloBlog/content/posts"
-attachments_dir = "/Users/lorenzo/Library/Mobile Documents/iCloud~md~obsidian/Documents/Ken vault/99 - Meta/Clipboard"
-static_images_dir = "/Users/lorenzo/Documents/GitHub/LolloBlog/static/images"
+# Percorsi
+OBSIDIAN_POST_DIR = "/Users/lorenzo/Library/Mobile Documents/iCloud~md~obsidian/Documents/Ken vault/08 - Blog/"  # Cartella dei post in Obsidian
+ATTACHMENTS_DIR = "/Users/lorenzo/Library/Mobile Documents/iCloud~md~obsidian/Documents/Ken vault/99 - Meta/Clipboard"  # Cartella degli allegati
+HUGO_POST_DIR = "/Users/lorenzo/Documents/GitHub/LolloBlog/content/posts"  # Cartella dei post in Hugo
 
-# Step 1: Process each markdown file in the posts directory
-for filename in os.listdir(posts_dir):
+# Regex per trovare i link delle immagini in formato Obsidian (con singolo !)
+IMAGE_REGEX = r'!\[\[([^]]*\.png)\]\]'
+
+# Elabora ogni file markdown nella cartella post di Obsidian
+for filename in os.listdir(OBSIDIAN_POST_DIR):
     if filename.endswith(".md"):
-        filepath = os.path.join(posts_dir, filename)
-        
-        with open(filepath, "r") as file:
-            content = file.read()
-        
-        # Step 2: Find all image links in the format ![Image Description](/images/Pasted%20image%20...%20.png)
-        images = re.findall(r'\[\[([^]]*\.png)\]\]', content)
-        
-        # Step 3: Replace image links and ensure URLs are correctly formatted
-        for image in images:
-            # Prepare the Markdown-compatible link with %20 replacing spaces
-            markdown_image = f"![Image Description](/images/{image.replace(' ', '%20')})"
-            content = content.replace(f"[[{image}]]", markdown_image)
-            
-            # Step 4: Copy the image to the Hugo static/images directory if it exists
-            image_source = os.path.join(attachments_dir, image)
-            if os.path.exists(image_source):
-                shutil.copy(image_source, static_images_dir)
+        # Nome del page bundle (es. "Prova" da "Prova.md")
+        bundle_name = filename[:-3]  # Rimuove ".md"
+        bundle_dir = os.path.join(HUGO_POST_DIR, bundle_name)
+        markdown_file = os.path.join(bundle_dir, "index.md")
 
-        # Step 5: Write the updated content back to the markdown file
-        with open(filepath, "w") as file:
-            file.write(content)
+        # Crea la directory del page bundle
+        os.makedirs(bundle_dir, exist_ok=True)
+
+        # Copia il file markdown come index.md
+        shutil.copy2(os.path.join(OBSIDIAN_POST_DIR, filename), markdown_file)
+
+        # Leggi il contenuto del file markdown
+        with open(markdown_file, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        # Trova e sostituisci i link delle immagini
+        def replace_image(match):
+            image_name = match.group(1)
+            # Rinomina l'immagine sostituendo spazi con trattini
+            new_image_name = image_name.replace(" ", "-")
+            # Copia l'immagine da attachments alla directory del page bundle con il nuovo nome
+            src_path = os.path.join(ATTACHMENTS_DIR, image_name)
+            dst_path = os.path.join(bundle_dir, new_image_name)
+            if os.path.exists(src_path):
+                shutil.copy2(src_path, dst_path)
+            # Riformatta il link per Stack (solo un !, percorso relativo)
+            return f"![{new_image_name}]({new_image_name})"
+
+        new_content = re.sub(IMAGE_REGEX, replace_image, content)
+
+        # Salva il file modificato
+        with open(markdown_file, "w", encoding="utf-8") as f:
+            f.write(new_content)
 
 print("Markdown files processed and images copied successfully.")
