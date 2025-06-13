@@ -19,10 +19,25 @@ def parse_front_matter(content):
     match = re.match(FRONT_MATTER_REGEX, content, re.DOTALL)
     if match:
         try:
-            return yaml.safe_load(match.group(1)) or {}
+            front_matter = yaml.safe_load(match.group(1)) or {}
+            return front_matter, match.group(0), match.group(1)
         except yaml.YAMLError:
-            return {}
-    return {}
+            return {}, None, None
+    return {}, None, None
+
+def update_front_matter(content, front_matter, original_front_matter, original_yaml):
+    """Update the front matter with modified image name and return new content."""
+    if 'image' in front_matter and front_matter['image']:
+        image_name = front_matter['image']
+        new_image_name = image_name.replace(" ", "-")
+        if image_name != new_image_name:
+            front_matter['image'] = new_image_name
+            # Regenerate YAML front matter
+            new_yaml = yaml.dump(front_matter, allow_unicode=True, sort_keys=False)
+            # Replace original front matter with updated version
+            new_front_matter = f"---\n{new_yaml}---\n"
+            return re.sub(FRONT_MATTER_REGEX, new_front_matter, content, 1)
+    return content
 
 # Elabora ogni file markdown nella cartella post di Obsidian
 for filename in os.listdir(OBSIDIAN_POST_DIR):
@@ -43,7 +58,7 @@ for filename in os.listdir(OBSIDIAN_POST_DIR):
             content = f.read()
 
         # Estrai il front matter
-        front_matter = parse_front_matter(content)
+        front_matter, original_front_matter, original_yaml = parse_front_matter(content)
         
         # Gestisci l'immagine specificata nel parametro 'image' del front matter
         if 'image' in front_matter and front_matter['image']:
@@ -56,6 +71,9 @@ for filename in os.listdir(OBSIDIAN_POST_DIR):
             if os.path.exists(src_path):
                 shutil.copy2(src_path, dst_path)
                 print(f"Copied featured image: {new_image_name} to {bundle_dir}")
+
+        # Aggiorna il front matter con il nome dell'immagine modificato
+        content = update_front_matter(content, front_matter, original_front_matter, original_yaml)
 
         # Trova e sostituisci i link delle immagini nel contenuto
         def replace_image(match):
