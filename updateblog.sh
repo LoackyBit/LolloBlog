@@ -9,7 +9,7 @@ REPO_URL="https://github.com/Lod34/LolloBlog"
 
 # Step 1: Sincronizza i file markdown da Obsidian a Hugo con rsync
 echo "Step 1: Sincronizzazione dei file markdown da Obsidian a Hugo con rsync..."
-rsync -av "$OBSIDIAN_POST_DIR/" "$HUGO_POST_DIR/"
+rsync -av --delete "$OBSIDIAN_POST_DIR/" "$HUGO_POST_DIR/"
 if [ $? -ne 0 ]; then
     echo "Errore: Sincronizzazione con rsync fallita. Controlla i percorsi o installa rsync."
     exit 1
@@ -54,7 +54,7 @@ echo "Step 5 completato: Commit eseguito."
 
 # Step 6: Push sul branch principale (per Vercel)
 echo "Step 6: Push sul branch principale per Vercel..."
-git push origin main
+git push origin master
 if [ $? -ne 0 ]; then
     echo "Errore: Push sul branch principale fallito. Controlla la connessione SSH o il repository."
     exit 1
