@@ -1,6 +1,7 @@
 import os
 import re
 import shutil
+import yaml
 
 # Percorsi
 OBSIDIAN_POST_DIR = "/Users/lorenzo/Library/Mobile Documents/iCloud~md~obsidian/Documents/Ken vault/08 - Blog/"  # Cartella dei post in Obsidian
@@ -9,6 +10,19 @@ HUGO_POST_DIR = "/Users/lorenzo/Documents/GitHub/LolloBlog/content/posts"  # Car
 
 # Regex per trovare i link delle immagini in formato Obsidian (con singolo !)
 IMAGE_REGEX = r'!\[\[([^]]*\.png)\]\]'
+
+# Regex per estrarre il front matter YAML
+FRONT_MATTER_REGEX = r'^---\s*\n(.*?)\n---\s*\n'
+
+def parse_front_matter(content):
+    """Parse YAML front matter from markdown content."""
+    match = re.match(FRONT_MATTER_REGEX, content, re.DOTALL)
+    if match:
+        try:
+            return yaml.safe_load(match.group(1)) or {}
+        except yaml.YAMLError:
+            return {}
+    return {}
 
 # Elabora ogni file markdown nella cartella post di Obsidian
 for filename in os.listdir(OBSIDIAN_POST_DIR):
@@ -28,7 +42,22 @@ for filename in os.listdir(OBSIDIAN_POST_DIR):
         with open(markdown_file, "r", encoding="utf-8") as f:
             content = f.read()
 
-        # Trova e sostituisci i link delle immagini
+        # Estrai il front matter
+        front_matter = parse_front_matter(content)
+        
+        # Gestisci l'immagine specificata nel parametro 'image' del front matter
+        if 'image' in front_matter and front_matter['image']:
+            image_name = front_matter['image']
+            # Rinomina l'immagine sostituendo spazi con trattini
+            new_image_name = image_name.replace(" ", "-")
+            # Verifica se l'immagine esiste in ATTACHMENTS_DIR
+            src_path = os.path.join(ATTACHMENTS_DIR, image_name)
+            dst_path = os.path.join(bundle_dir, new_image_name)
+            if os.path.exists(src_path):
+                shutil.copy2(src_path, dst_path)
+                print(f"Copied featured image: {new_image_name} to {bundle_dir}")
+
+        # Trova e sostituisci i link delle immagini nel contenuto
         def replace_image(match):
             image_name = match.group(1)
             # Rinomina l'immagine sostituendo spazi con trattini
