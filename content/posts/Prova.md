@@ -8,4 +8,4 @@ tags:
 
 
 questa è una prova
-![[Pasted image 20250201222523 1.png]]
+![[Pasted image 20250201222523.png]]
