@@ -5,7 +5,7 @@ OBSIDIAN_POST_DIR="/Users/lorenzo/Library/Mobile Documents/iCloud~md~obsidian/Do
 HUGO_POST_DIR="/Users/lorenzo/Documents/GitHub/LolloBlog/content/posts"
 IMAGES_SCRIPT="/Users/lorenzo/Documents/GitHub/LolloBlog/images.py"
 HUGO_DIR="/Users/lorenzo/Documents/GitHub/LolloBlog"
-REPO_URL="https://github.com/Lod34/LolloBlog"
+REPO_URL="https://github.com/LoackyBit/LolloBlog"
 
 # Step 1: Sincronizza i file markdown da Obsidian a Hugo con rsync
 echo "Step 1: Sincronizzazione dei file markdown da Obsidian a Hugo con rsync..."
