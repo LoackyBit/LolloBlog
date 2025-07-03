@@ -1,6 +1,6 @@
 ---
 title: 'Da TradingView a MT5: Automazione della TrendBars Strategy su EUR/USD'
-date: 2025-07-03 11:00:00
+date: 2025-07-02 15:00:00
 draft: false
 tags:
 - Trading

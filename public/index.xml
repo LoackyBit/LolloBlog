@@ -7,10 +7,10 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Lorenzo</copyright>
-        <lastBuildDate>Thu, 03 Jul 2025 11:00:00 +0000</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 02 Jul 2025 15:00:00 +0000</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Da TradingView a MT5: Automazione della TrendBars Strategy su EUR/USD</title>
         <link>https://example.com/posts/blogpost---20250703/</link>
-        <pubDate>Thu, 03 Jul 2025 11:00:00 +0000</pubDate>
+        <pubDate>Wed, 02 Jul 2025 15:00:00 +0000</pubDate>
         
         <guid>https://example.com/posts/blogpost---20250703/</guid>
         <description>&lt;img src="https://example.com/posts/blogpost---20250703/Pasted-image-20250703230925.png" alt="Featured image of post Da TradingView a MT5: Automazione della TrendBars Strategy su EUR/USD" /&gt;&lt;p&gt;Negli ultimi mesi ho affrontato una sfida tecnica molto interessante: portare una strategia di trading sviluppata originariamente in Pine Script su TradingView, denominata &lt;strong&gt;TrendBars Strategy&lt;/strong&gt;, su &lt;strong&gt;MetaTrader 5 (MT5)&lt;/strong&gt;, trasformandola in un Expert Advisor (EA) completamente automatizzato e pronto all’uso su un conto reale.&lt;/p&gt;
