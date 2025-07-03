@@ -59,14 +59,18 @@
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;la-conversione-da-pine-script-a-mql5&#34;&gt;La conversione: da Pine Script a MQL5
-&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/Pasted-image-20250703234720.png&#34;
-	
-	
-	
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703234720.png&#34;
+	width=&#34;2940&#34;
+	height=&#34;1912&#34;
+	srcset=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703234720_hu_8e83308d400b29d3.png 480w, https://example.com/posts/blogpost---20250703/Pasted-image-20250703234720_hu_e8b02a728b8ed7e3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Pasted-image-20250703234720.png&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;369px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;1-analisi-e-porting-della-logica&#34;&gt;1. Analisi e porting della logica
