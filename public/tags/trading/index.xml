@@ -7,13 +7,13 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Lorenzo</copyright>
-        <lastBuildDate>Thu, 03 Jul 2025 10:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/trading/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 03 Jul 2025 11:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/trading/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Da TradingView a MT5: Automazione della TrendBars Strategy su EUR/USD</title>
         <link>https://example.com/posts/blogpost---20250703/</link>
-        <pubDate>Thu, 03 Jul 2025 10:00:00 +0000</pubDate>
+        <pubDate>Thu, 03 Jul 2025 11:00:00 +0000</pubDate>
         
         <guid>https://example.com/posts/blogpost---20250703/</guid>
-        <description>&lt;img src="https://example.com/Pasted%20image%2020250703230925.png" alt="Featured image of post Da TradingView a MT5: Automazione della TrendBars Strategy su EUR/USD" /&gt;&lt;p&gt;Negli ultimi mesi ho affrontato una sfida tecnica molto interessante: portare una strategia di trading sviluppata originariamente in Pine Script su TradingView, denominata &lt;strong&gt;TrendBars Strategy&lt;/strong&gt;, su &lt;strong&gt;MetaTrader 5 (MT5)&lt;/strong&gt;, trasformandola in un Expert Advisor (EA) completamente automatizzato e pronto all’uso su un conto reale.&lt;/p&gt;
+        <description>&lt;img src="https://example.com/posts/blogpost---20250703/Pasted-image-20250703230925.png" alt="Featured image of post Da TradingView a MT5: Automazione della TrendBars Strategy su EUR/USD" /&gt;&lt;p&gt;Negli ultimi mesi ho affrontato una sfida tecnica molto interessante: portare una strategia di trading sviluppata originariamente in Pine Script su TradingView, denominata &lt;strong&gt;TrendBars Strategy&lt;/strong&gt;, su &lt;strong&gt;MetaTrader 5 (MT5)&lt;/strong&gt;, trasformandola in un Expert Advisor (EA) completamente automatizzato e pronto all’uso su un conto reale.&lt;/p&gt;
 &lt;h1 id=&#34;da-tradingview-a-mt5-il-contesto&#34;&gt;Da TradingView a MT5: il contesto
 &lt;/h1&gt;&lt;p&gt;TradingView offre uno degli ambienti migliori per lo sviluppo e il test di strategie tramite Pine Script, ma ha dei limiti importanti:&lt;/p&gt;
 &lt;ul&gt;
@@ -22,7 +22,20 @@
 &lt;/ul&gt;
 &lt;p&gt;MetaTrader 5, invece, è la piattaforma di riferimento per il trading automatico su Forex e CFD, grazie alla sua flessibilità e alla possibilità di utilizzare Expert Advisor programmati in MQL5.&lt;/p&gt;
 &lt;h1 id=&#34;la-strategia-trendbars-su-base-ema-atr-e-hlc3&#34;&gt;La Strategia: TrendBars su base EMA, ATR e HLC3
-&lt;/h1&gt;&lt;p&gt;![[Pasted image 20250703230925.png]]&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703230925.png&#34;
+	width=&#34;2940&#34;
+	height=&#34;1912&#34;
+	srcset=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703230925_hu_bd70e21a98b0a81.png 480w, https://example.com/posts/blogpost---20250703/Pasted-image-20250703230925_hu_230383c32e4c506d.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pasted-image-20250703230925.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;369px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;p&gt;La strategia TrendBars nasce da una semplice idea: colorare le barre in base alla deviazione della media HLC3 (media di High, Low e Close) rispetto a una EMA (media mobile esponenziale) dinamicamente &amp;ldquo;ampliata&amp;rdquo; da una banda di tolleranza calcolata tramite ATR (Average True Range) e un moltiplicatore.&lt;/p&gt;
 &lt;p&gt;Le regole operative sono:&lt;/p&gt;
 &lt;ul&gt;
@@ -75,16 +88,55 @@
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Innanzitutto non esiste la possibilità di visualizzare il grafico Heiken Ashi, se non tramite un indicatore.
-![[Pasted image 20250703225820.png]]&lt;/p&gt;
+&lt;img src=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703225820.png&#34;
+	width=&#34;1324&#34;
+	height=&#34;690&#34;
+	srcset=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703225820_hu_c07abf67cc6663e4.png 480w, https://example.com/posts/blogpost---20250703/Pasted-image-20250703225820_hu_904d8189211a5c0.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pasted-image-20250703225820.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;460px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;L’Expert Advisor che ho sviluppato non è in grado di disegnare a grafico le candele Heikin Ashi modificate, perciò per la visualizzazione ho dovuto creare un’indicatore separato
-![[Pasted image 20250703230057.png]]&lt;/p&gt;
+&lt;img src=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703230057.png&#34;
+	width=&#34;2940&#34;
+	height=&#34;1912&#34;
+	srcset=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703230057_hu_4c985eb955edc7ed.png 480w, https://example.com/posts/blogpost---20250703/Pasted-image-20250703230057_hu_cc15e666cb8f771f.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pasted-image-20250703230057.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;369px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;p&gt;Per una migliore visualizzazione ho disattivato la visualizzazione del grafico, impostando il grafico ‘linea’ e poi selezionando il colore ‘none’ tramite le proprietà del grafico.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Siccome indicatore (visualizzatore) e strategia sono separati, non sarà possibile visualizzare il grafico Heikin Ashi modificato durante la simulazione del backtest.
-![[Pasted image 20250703230509.png]]&lt;/p&gt;
+&lt;img src=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703230509.png&#34;
+	width=&#34;2940&#34;
+	height=&#34;1912&#34;
+	srcset=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703230509_hu_82492f4fc2720640.png 480w, https://example.com/posts/blogpost---20250703/Pasted-image-20250703230509_hu_c1da521c3347a66c.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pasted-image-20250703230509.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;369px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
