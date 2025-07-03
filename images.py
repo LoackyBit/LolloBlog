@@ -46,12 +46,6 @@ for filename in os.listdir(OBSIDIAN_POST_DIR):
         print(f"Processing file: {filename}")
         # Nome del page bundle (es. "First Post" da "First Post.md")
         bundle_name = os.path.splitext(filename)[0]  # Rimuove l'estensione .md
-        
-        # Controlla che il nome del bundle non sia vuoto o problematico
-        if not bundle_name or bundle_name.strip() == "" or bundle_name.startswith('.'):
-            print(f"Warning: Skipping file with empty or invalid name: {filename}")
-            continue
-            
         bundle_dir = os.path.join(HUGO_POST_DIR, bundle_name)
         markdown_file = os.path.join(bundle_dir, "index.md")
 
