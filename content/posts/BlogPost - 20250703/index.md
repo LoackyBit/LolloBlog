@@ -6,13 +6,10 @@ tags:
 - Trading
 description: 'Negli ultimi mesi ho affrontato una sfida tecnica molto interessante:
   portare una strategia di trading sviluppata originariamente in Pine Script su TradingView,
-  denominata **TrendBars Strategy**, su **MetaTrader 5 (MT5)**, trasformandola in
-  un Expert Advisor (EA) completamente automatizzato e pronto all’uso su un conto
-  reale.'
+  denominata TrendBars Strategy, su MetaTrader 5 (MT5), trasformandola in un Expert
+  Advisor (EA) completamente automatizzato e pronto all’uso su un conto reale.'
 image: Pasted-image-20250703230925.png
 ---
-Negli ultimi mesi ho affrontato una sfida tecnica molto interessante: portare una strategia di trading sviluppata originariamente in Pine Script su TradingView, denominata **TrendBars Strategy**, su **MetaTrader 5 (MT5)**, trasformandola in un Expert Advisor (EA) completamente automatizzato e pronto all’uso su un conto reale.
-
 # Da TradingView a MT5: il contesto
 
 TradingView offre uno degli ambienti migliori per lo sviluppo e il test di strategie tramite Pine Script, ma ha dei limiti importanti:
