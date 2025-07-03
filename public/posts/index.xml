@@ -7,13 +7,152 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Lorenzo</copyright>
-        <lastBuildDate>Fri, 13 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/posts/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 02 Jul 2025 22:00:00 +0000</lastBuildDate><atom:link href="https://example.com/posts/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Da TradingView a MT5: Automazione della TrendBars Strategy su EUR/USD</title>
+        <link>https://example.com/posts/blogpost---20250703/</link>
+        <pubDate>Wed, 02 Jul 2025 22:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/posts/blogpost---20250703/</guid>
+        <description>&lt;img src="https://example.com/posts/blogpost---20250703/Pasted-image-20250703230925.png" alt="Featured image of post Da TradingView a MT5: Automazione della TrendBars Strategy su EUR/USD" /&gt;&lt;p&gt;Negli ultimi mesi ho affrontato una sfida tecnica molto interessante: portare una strategia di trading sviluppata originariamente in Pine Script su TradingView, denominata &lt;strong&gt;TrendBars Strategy&lt;/strong&gt;, su &lt;strong&gt;MetaTrader 5 (MT5)&lt;/strong&gt;, trasformandola in un Expert Advisor (EA) completamente automatizzato e pronto all’uso su un conto reale.&lt;/p&gt;
+&lt;h1 id=&#34;da-tradingview-a-mt5-il-contesto&#34;&gt;Da TradingView a MT5: il contesto
+&lt;/h1&gt;&lt;p&gt;TradingView offre uno degli ambienti migliori per lo sviluppo e il test di strategie tramite Pine Script, ma ha dei limiti importanti:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Non consente trading automatico diretto su conti reali.&lt;/li&gt;
+&lt;li&gt;È più orientato all’analisi visuale che all’automazione.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;MetaTrader 5, invece, è la piattaforma di riferimento per il trading automatico su Forex e CFD, grazie alla sua flessibilità e alla possibilità di utilizzare Expert Advisor programmati in MQL5.&lt;/p&gt;
+&lt;h1 id=&#34;la-strategia-trendbars-su-base-ema-atr-e-hlc3&#34;&gt;La Strategia: TrendBars su base EMA, ATR e HLC3
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703230925.png&#34;
+	width=&#34;2940&#34;
+	height=&#34;1912&#34;
+	srcset=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703230925_hu_bd70e21a98b0a81.png 480w, https://example.com/posts/blogpost---20250703/Pasted-image-20250703230925_hu_230383c32e4c506d.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pasted-image-20250703230925.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;369px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;La strategia TrendBars nasce da una semplice idea: colorare le barre in base alla deviazione della media HLC3 (media di High, Low e Close) rispetto a una EMA (media mobile esponenziale) dinamicamente &amp;ldquo;ampliata&amp;rdquo; da una banda di tolleranza calcolata tramite ATR (Average True Range) e un moltiplicatore.&lt;/p&gt;
+&lt;p&gt;Le regole operative sono:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Long&lt;/strong&gt; se HLC3 &amp;gt; EMA + tolleranza&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Short&lt;/strong&gt; se HLC3 &amp;lt; EMA - tolleranza&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flat/chiusura&lt;/strong&gt; se HLC3 rientra nella banda neutrale tra EMA - tolleranza ed EMA + tolleranza&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Le uscite sono sempre &amp;ldquo;a mercato&amp;rdquo;, senza target o stop fisso.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;specifiche-operative&#34;&gt;Specifiche operative
+&lt;/h1&gt;&lt;p&gt;Per la mia applicazione pratica ho scelto:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Strumento:&lt;/strong&gt; EUR/USD&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Capitale iniziale:&lt;/strong&gt; 1000 USD&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Leva:&lt;/strong&gt; 1:30&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Volume fisso per operazione:&lt;/strong&gt; 30000 USD (0.3 lotti standard su EUR/USD)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Commissione:&lt;/strong&gt; 0,00006 USD per unità (da confrontare e adattare in base al broker MT5)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Margine massimo impegnato:&lt;/strong&gt; 100% del capitale&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Timeframe:&lt;/strong&gt; 5m&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Grafico:&lt;/strong&gt; Heikin Ashi (come su TradingView)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Piattaforma:&lt;/strong&gt; MT5 installato su MacBook Air M3 tramite Wine&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;la-conversione-da-pine-script-a-mql5&#34;&gt;La conversione: da Pine Script a MQL5
+&lt;/h1&gt;&lt;h2 id=&#34;1-analisi-e-porting-della-logica&#34;&gt;1. Analisi e porting della logica
+&lt;/h2&gt;&lt;p&gt;Ho analizzato il Pine Script originale, identificando i punti chiave:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Calcolo EMA e ATR su dati regolari&lt;/li&gt;
+&lt;li&gt;Calcolo HLC3 e condizioni di trend su dati Heikin Ashi&lt;/li&gt;
+&lt;li&gt;Gestione dinamica della banda di tolleranza&lt;/li&gt;
+&lt;li&gt;Selezione e visualizzazione colore barre&lt;/li&gt;
+&lt;li&gt;Regole di ingresso/uscita e gestione delle posizioni&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-scrittura-dellexpert-advisor-in-mql5&#34;&gt;2. Scrittura dell’Expert Advisor in MQL5
+&lt;/h2&gt;&lt;p&gt;Ho realizzato un EA che:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Replica fedelmente la logica del Pine Script (incluso il calcolo di Heikin Ashi su OHLC standard, poiché su MT5 non esiste un vero e proprio grafico Heikin Ashi, ma un’indicatore a parte)&lt;/li&gt;
+&lt;li&gt;Gestisce la dimensione fissa dell’ordine, espressa in percentuale rispetto al capitale, e verifica i requisiti di margine prima di ogni operazione&lt;/li&gt;
+&lt;li&gt;Mostra sul grafico tutte le informazioni utili: trend, valori EMA, ATR, tolleranza, colore barra, stato posizioni, ecc.&lt;/li&gt;
+&lt;li&gt;Consente di visualizzare la EMA colorata, le bande di tolleranza e tutte le condizioni di ingresso/uscita&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-adattamento-alle-condizioni-del-broker-mt5&#34;&gt;3. Adattamento alle condizioni del broker MT5
+&lt;/h2&gt;&lt;p&gt;Essendo i parametri di marginazione e commissione diversi tra Capital.com (usato in TradingView) e il mio nuovo broker MT5, ho inserito nel codice la possibilità di modificare facilmente:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Commissione&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Calcolo del margine&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dimensione minima/massima del lotto&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-problemi-di-visualizzazione-su-mt5&#34;&gt;4. Problemi di Visualizzazione su MT5
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Innanzitutto non esiste la possibilità di visualizzare il grafico Heiken Ashi, se non tramite un indicatore.
+&lt;img src=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703225820.png&#34;
+	width=&#34;1324&#34;
+	height=&#34;690&#34;
+	srcset=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703225820_hu_c07abf67cc6663e4.png 480w, https://example.com/posts/blogpost---20250703/Pasted-image-20250703225820_hu_904d8189211a5c0.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pasted-image-20250703225820.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;460px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;L’Expert Advisor che ho sviluppato non è in grado di disegnare a grafico le candele Heikin Ashi modificate, perciò per la visualizzazione ho dovuto creare un’indicatore separato
+&lt;img src=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703230057.png&#34;
+	width=&#34;2940&#34;
+	height=&#34;1912&#34;
+	srcset=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703230057_hu_4c985eb955edc7ed.png 480w, https://example.com/posts/blogpost---20250703/Pasted-image-20250703230057_hu_cc15e666cb8f771f.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pasted-image-20250703230057.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;369px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Per una migliore visualizzazione ho disattivato la visualizzazione del grafico, impostando il grafico ‘linea’ e poi selezionando il colore ‘none’ tramite le proprietà del grafico.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Siccome indicatore (visualizzatore) e strategia sono separati, non sarà possibile visualizzare il grafico Heikin Ashi modificato durante la simulazione del backtest.
+&lt;img src=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703230509.png&#34;
+	width=&#34;2940&#34;
+	height=&#34;1912&#34;
+	srcset=&#34;https://example.com/posts/blogpost---20250703/Pasted-image-20250703230509_hu_82492f4fc2720640.png 480w, https://example.com/posts/blogpost---20250703/Pasted-image-20250703230509_hu_c1da521c3347a66c.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pasted-image-20250703230509.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;369px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;installazione-e-test&#34;&gt;Installazione e test
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Installazione su MacBook Air M3&lt;/strong&gt;: MT5 funziona perfettamente tramite Wine. Ho compilato l’EA in MetaEditor, l’ho caricato sul grafico EUR/USD (Heikin Ashi), impostato i parametri richiesti e attivato il trading algoritmico.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Backtest&lt;/strong&gt;: Ho testato la strategia tramite il tester di MT5, impostando capitale, leva, commissioni e condizioni identiche a quelle di TradingView. In questo modo ho potuto verificare la corrispondenza tra i risultati ottenuti sulle due piattaforme.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>How I Built My Blog with Hugo and the Stack Theme</title>
         <link>https://example.com/posts/first-post/</link>
         <pubDate>Fri, 13 Jun 2025 00:00:00 +0000</pubDate>
         
         <guid>https://example.com/posts/first-post/</guid>
-        <description>&lt;img src="https://example.com/Pasted%20image%2020250613120635.png" alt="Featured image of post How I Built My Blog with Hugo and the Stack Theme" /&gt;&lt;h1 id=&#34;how-i-built-my-blog-with-hugo-and-the-stack-theme&#34;&gt;How I Built My Blog with Hugo and the Stack Theme
+        <description>&lt;img src="https://example.com/posts/first-post/Pasted-image-20250613120635.png" alt="Featured image of post How I Built My Blog with Hugo and the Stack Theme" /&gt;&lt;h1 id=&#34;how-i-built-my-blog-with-hugo-and-the-stack-theme&#34;&gt;How I Built My Blog with Hugo and the Stack Theme
 &lt;/h1&gt;&lt;p&gt;Hello everyone! In this post, I’ll share how I built my blog using &lt;strong&gt;Obsidian&lt;/strong&gt;, &lt;strong&gt;Hugo&lt;/strong&gt;, &lt;strong&gt;GitHub&lt;/strong&gt;, and &lt;strong&gt;Hostinger&lt;/strong&gt;, following a tutorial by NetworkChuck and customizing it with the &lt;strong&gt;Stack&lt;/strong&gt; theme (&lt;a class=&#34;link&#34; href=&#34;https://stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://stack.jimmycai.com/&lt;/a&gt;). I’ll also guide you through configuring the Stack theme to create a sleek and functional blog.&lt;/p&gt;
 &lt;h2 id=&#34;why-a-blog&#34;&gt;Why a Blog?
