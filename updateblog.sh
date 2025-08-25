@@ -97,26 +97,5 @@ echo "Step 9 completato: Push eseguito con successo."
 echo ""
 echo "🎉 Aggiornamento blog multilingua completato con successo!"
 echo "🌐 Il blog è ora disponibile in italiano e inglese"
-echo "🇮🇹 Post italiani: content/it/posts"
-echo "🇺🇸 Post inglesi: content/en/posts"
-echo "Step 6: Aggiunta e commit dei file..."
-git add .
-git commit -m "Aggiornamento blog $(date +%F)"
-if [ $? -ne 0 ]; then
-    echo "Errore: Commit dei file fallito. Controlla lo stato del repository Git."
-    exit 1
-fi
-echo "Step 6 completato: Commit eseguito."
-
-# Step 8: Push sul branch principale (per Vercel)
-echo "Step 7: Push sul branch principale per Vercel..."
-git push -u origin master
-if [ $? -ne 0 ]; then
-    echo "Errore: Push sul branch principale fallito. Controlla la connessione SSH o il repository."
-    exit 1
-fi
-echo "Step 7 completato: Push eseguito con successo."
-
-echo ""
-echo "🎉 Aggiornamento blog multilingua completato con successo!"
-echo "🌐 Il blog è ora disponibile in italiano e inglese"
+echo "🇮🇹 Post italiani: content/it/post"
+echo "🇺🇸 Post inglesi: content/en/post"
