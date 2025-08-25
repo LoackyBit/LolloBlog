@@ -26,6 +26,18 @@ def parse_front_matter(content):
             return {}, None
     return {}, None
 
+def is_draft_post(file_path):
+    """Controlla se un post è marcato come draft."""
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        
+        front_matter, _ = parse_front_matter(content)
+        return front_matter.get('draft', False)
+    except Exception as e:
+        print(f"Error reading {file_path}: {e}")
+        return False
+
 def update_front_matter(content, front_matter, original_front_matter):
     """Update the front matter with modified image name and return new content."""
     if 'image' in front_matter and front_matter['image']:

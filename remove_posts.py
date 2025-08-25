@@ -35,18 +35,19 @@ def parse_front_matter(content):
     return {}
 
 def get_obsidian_posts():
-    """Ottiene l'elenco dei post presenti in Obsidian (escludendo quelli con draft: true)."""
+    """Ottiene l'elenco dei post presenti in Hugo (dopo rsync) escludendo quelli con draft: true."""
     obsidian_posts = set()
     draft_posts = set()
     
-    if not os.path.exists(OBSIDIAN_POST_DIR):
-        print(f"⚠️  Warning: Obsidian directory not found: {OBSIDIAN_POST_DIR}")
+    if not os.path.exists(HUGO_POST_DIR):
+        print(f"⚠️  Warning: Hugo posts directory not found: {HUGO_POST_DIR}")
         return obsidian_posts, draft_posts
     
-    for filename in os.listdir(OBSIDIAN_POST_DIR):
+    # Controlla i file .md nella directory Hugo (copiati da rsync)
+    for filename in os.listdir(HUGO_POST_DIR):
         if filename.endswith(".md"):
             bundle_name = os.path.splitext(filename)[0]
-            file_path = os.path.join(OBSIDIAN_POST_DIR, filename)
+            file_path = os.path.join(HUGO_POST_DIR, filename)
             
             try:
                 with open(file_path, "r", encoding="utf-8") as f:
@@ -63,6 +64,28 @@ def get_obsidian_posts():
                     
             except Exception as e:
                 print(f"❌ Error reading {filename}: {e}")
+        
+        elif os.path.isdir(os.path.join(HUGO_POST_DIR, filename)) and not filename.startswith('.'):
+            # È una cartella page bundle - controlla il file index.md
+            bundle_name = filename
+            index_file = os.path.join(HUGO_POST_DIR, filename, "index.md")
+            
+            if os.path.exists(index_file):
+                try:
+                    with open(index_file, "r", encoding="utf-8") as f:
+                        content = f.read()
+                    
+                    front_matter = parse_front_matter(content)
+                    
+                    # Controlla se il post è in draft
+                    if front_matter.get('draft', False):
+                        draft_posts.add(bundle_name)
+                        print(f"📝 Found draft post: {bundle_name}")
+                    else:
+                        obsidian_posts.add(bundle_name)
+                        
+                except Exception as e:
+                    print(f"❌ Error reading {index_file}: {e}")
     
     return obsidian_posts, draft_posts
 
