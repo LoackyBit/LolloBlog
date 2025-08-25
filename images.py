@@ -55,6 +55,13 @@ def update_front_matter(content, front_matter, original_front_matter):
 # Elabora ogni file markdown nella cartella post di Obsidian
 for filename in os.listdir(OBSIDIAN_POST_DIR):
     if filename.endswith(".md"):
+        source_file = os.path.join(OBSIDIAN_POST_DIR, filename)
+        
+        # Controlla se il post è draft - se sì, saltalo
+        if is_draft_post(source_file):
+            print(f"Skipping draft post: {filename}")
+            continue
+            
         print(f"Processing file: {filename}")
         # Nome del page bundle (es. "First Post" da "First Post.md")
         bundle_name = os.path.splitext(filename)[0]  # Rimuove l'estensione .md
