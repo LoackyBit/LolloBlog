@@ -2,120 +2,120 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://lollo-blog.vercel.app/</loc>
     <lastmod>2025-08-25T18:46:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/"
+                href="https://lollo-blog.vercel.app/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="it-IT"
-                href="http://localhost:1313/"
+                href="https://lollo-blog.vercel.app/"
                 />
   </url><url>
-    <loc>http://localhost:1313/post/blogpost---20250825/</loc>
+    <loc>https://lollo-blog.vercel.app/post/blogpost---20250825/</loc>
     <lastmod>2025-08-25T18:46:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/macos/</loc>
+    <loc>https://lollo-blog.vercel.app/tags/macos/</loc>
     <lastmod>2025-08-25T18:46:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/neovim/</loc>
+    <loc>https://lollo-blog.vercel.app/tags/neovim/</loc>
     <lastmod>2025-08-25T18:46:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
+    <loc>https://lollo-blog.vercel.app/post/</loc>
     <lastmod>2025-08-25T18:46:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/post/"
+                href="https://lollo-blog.vercel.app/en/post/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="it-IT"
-                href="http://localhost:1313/post/"
+                href="https://lollo-blog.vercel.app/post/"
                 />
   </url><url>
-    <loc>http://localhost:1313/tags/programmazione/</loc>
+    <loc>https://lollo-blog.vercel.app/tags/programmazione/</loc>
     <lastmod>2025-08-25T18:46:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/python/</loc>
+    <loc>https://lollo-blog.vercel.app/tags/python/</loc>
     <lastmod>2025-08-25T18:46:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://lollo-blog.vercel.app/tags/</loc>
     <lastmod>2025-08-25T18:46:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/tags/"
+                href="https://lollo-blog.vercel.app/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="it-IT"
-                href="http://localhost:1313/tags/"
+                href="https://lollo-blog.vercel.app/tags/"
                 />
   </url><url>
-    <loc>http://localhost:1313/tags/terminale/</loc>
+    <loc>https://lollo-blog.vercel.app/tags/terminale/</loc>
     <lastmod>2025-08-25T18:46:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/vim/</loc>
+    <loc>https://lollo-blog.vercel.app/tags/vim/</loc>
     <lastmod>2025-08-25T18:46:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/page/archives/</loc>
+    <loc>https://lollo-blog.vercel.app/page/archives/</loc>
     <lastmod>2025-08-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/page/archives/"
+                href="https://lollo-blog.vercel.app/en/page/archives/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="it-IT"
-                href="http://localhost:1313/page/archives/"
+                href="https://lollo-blog.vercel.app/page/archives/"
                 />
   </url><url>
-    <loc>http://localhost:1313/page/</loc>
+    <loc>https://lollo-blog.vercel.app/page/</loc>
     <lastmod>2025-08-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/page/"
+                href="https://lollo-blog.vercel.app/en/page/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="it-IT"
-                href="http://localhost:1313/page/"
+                href="https://lollo-blog.vercel.app/page/"
                 />
   </url><url>
-    <loc>http://localhost:1313/post/blogpost---20250703/</loc>
+    <loc>https://lollo-blog.vercel.app/post/blogpost---20250703/</loc>
     <lastmod>2025-07-02T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/trading/</loc>
+    <loc>https://lollo-blog.vercel.app/tags/trading/</loc>
     <lastmod>2025-07-02T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://lollo-blog.vercel.app/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/categories/"
+                href="https://lollo-blog.vercel.app/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="it-IT"
-                href="http://localhost:1313/categories/"
+                href="https://lollo-blog.vercel.app/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/page/search/</loc>
+    <loc>https://lollo-blog.vercel.app/page/search/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="http://localhost:1313/en/page/search/"
+                href="https://lollo-blog.vercel.app/en/page/search/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="it-IT"
-                href="http://localhost:1313/page/search/"
+                href="https://lollo-blog.vercel.app/page/search/"
                 />
   </url>
 </urlset>

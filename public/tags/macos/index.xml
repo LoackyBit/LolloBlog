@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Macos on LolloBlog</title>
-        <link>http://localhost:1313/tags/macos/</link>
+        <link>https://lollo-blog.vercel.app/tags/macos/</link>
         <description>Recent content in Macos on LolloBlog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>it-IT</language>
         <copyright>Lorenzo</copyright>
-        <lastBuildDate>Mon, 25 Aug 2025 18:46:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/macos/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 25 Aug 2025 18:46:00 +0000</lastBuildDate><atom:link href="https://lollo-blog.vercel.app/tags/macos/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Imparare Vim e Neovim: La Mia Configurazione per Programmazione Python</title>
-        <link>http://localhost:1313/post/blogpost---20250825/</link>
+        <link>https://lollo-blog.vercel.app/post/blogpost---20250825/</link>
         <pubDate>Mon, 25 Aug 2025 18:46:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/post/blogpost---20250825/</guid>
-        <description>&lt;img src="http://localhost:1313/post/blogpost---20250825/Pasted-image-20250825185813.png" alt="Featured image of post Imparare Vim e Neovim: La Mia Configurazione per Programmazione Python" /&gt;&lt;h1 id=&#34;introduzione&#34;&gt;Introduzione
+        <guid>https://lollo-blog.vercel.app/post/blogpost---20250825/</guid>
+        <description>&lt;img src="https://lollo-blog.vercel.app/post/blogpost---20250825/Pasted-image-20250825185813.png" alt="Featured image of post Imparare Vim e Neovim: La Mia Configurazione per Programmazione Python" /&gt;&lt;h1 id=&#34;introduzione&#34;&gt;Introduzione
 &lt;/h1&gt;&lt;p&gt;Negli ultimi giorni ho deciso di immergermi nello studio di Vim, un editor di testo potente ma notoriamente ostico, per migliorare le mie competenze di programmazione. Sto seguendo il corso &lt;a class=&#34;link&#34; href=&#34;https://cs50.harvard.edu/python/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;CS50&amp;rsquo;s Introduction to Programming with Python&lt;/a&gt; di Harvard, che include una serie di &lt;em&gt;problem sets&lt;/em&gt; – esercizi di coding che richiedono di sviluppare soluzioni a problemi specifici. Per rendere l’esperienza più formativa, ho scelto di scrivere questi programmi usando Vim, o meglio, Neovim, direttamente dal terminale. In questo post racconto come ho configurato il mio ambiente di lavoro, integrando Visual Studio Code, iTerm2 e cheat sheets per Vim e il terminale macOS, e come ho superato alcune sfide iniziali.&lt;/p&gt;
 &lt;h2 id=&#34;contesto&#34;&gt;Contesto
