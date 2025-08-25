@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Lorenzo</copyright>
-        <lastBuildDate>Mon, 25 Aug 2025 18:46:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 25 Aug 2025 20:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Test</title>
+        <link>https://example.com/tags/test/</link>
+        <pubDate>Mon, 25 Aug 2025 20:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/tags/test/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Macos</title>
         <link>https://example.com/tags/macos/</link>
         <pubDate>Mon, 25 Aug 2025 18:46:00 +0000</pubDate>
