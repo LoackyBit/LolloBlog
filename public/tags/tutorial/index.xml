@@ -13,7 +13,7 @@
         <pubDate>Fri, 13 Jun 2025 00:00:00 +0000</pubDate>
         
         <guid>https://example.com/posts/first-post/</guid>
-        <description>&lt;img src="https://example.com/posts/first-post/Pasted-image-20250613120635.png" alt="Featured image of post How I Built My Blog with Hugo and the Stack Theme" /&gt;&lt;h1 id=&#34;how-i-built-my-blog-with-hugo-and-the-stack-theme&#34;&gt;How I Built My Blog with Hugo and the Stack Theme
+        <description>&lt;img src="https://example.com/Pasted%20image%2020250613120635.png" alt="Featured image of post How I Built My Blog with Hugo and the Stack Theme" /&gt;&lt;h1 id=&#34;how-i-built-my-blog-with-hugo-and-the-stack-theme&#34;&gt;How I Built My Blog with Hugo and the Stack Theme
 &lt;/h1&gt;&lt;p&gt;Hello everyone! In this post, I’ll share how I built my blog using &lt;strong&gt;Obsidian&lt;/strong&gt;, &lt;strong&gt;Hugo&lt;/strong&gt;, &lt;strong&gt;GitHub&lt;/strong&gt;, and &lt;strong&gt;Hostinger&lt;/strong&gt;, following a tutorial by NetworkChuck and customizing it with the &lt;strong&gt;Stack&lt;/strong&gt; theme (&lt;a class=&#34;link&#34; href=&#34;https://stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://stack.jimmycai.com/&lt;/a&gt;). I’ll also guide you through configuring the Stack theme to create a sleek and functional blog.&lt;/p&gt;
 &lt;h2 id=&#34;why-a-blog&#34;&gt;Why a Blog?
