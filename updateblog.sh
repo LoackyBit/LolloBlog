@@ -4,6 +4,7 @@
 OBSIDIAN_POST_DIR="/Users/lorenzo/Library/Mobile Documents/iCloud~md~obsidian/Documents/Ken vault/08 - Blog"
 HUGO_POST_DIR="/Users/lorenzo/Documents/GitHub/LolloBlog/content/posts"
 IMAGES_SCRIPT="/Users/lorenzo/Documents/GitHub/LolloBlog/images.py"
+CLEANUP_SCRIPT="/Users/lorenzo/Documents/GitHub/LolloBlog/cleanup.py"
 HUGO_DIR="/Users/lorenzo/Documents/GitHub/LolloBlog"
 REPO_URL="https://github.com/LoackyBit/LolloBlog"
 
@@ -25,38 +26,47 @@ if [ $? -ne 0 ]; then
 fi
 echo "Step 2 completato: Elaborazione Python terminata."
 
-# Step 3: Vai alla directory di Hugo
-echo "Step 3: Spostamento nella directory di Hugo..."
+# Step 3: Pulizia file markdown duplicati
+echo "Step 3: Pulizia file markdown duplicati..."
+python3 "$CLEANUP_SCRIPT"
+if [ $? -ne 0 ]; then
+    echo "Errore: Pulizia file duplicati fallita. Controlla il file cleanup.py."
+    exit 1
+fi
+echo "Step 3 completato: Pulizia terminata."
+
+# Step 4: Vai alla directory di Hugo
+echo "Step 4: Spostamento nella directory di Hugo..."
 cd "$HUGO_DIR" || {
     echo "Errore: Impossibile cambiare directory in $HUGO_DIR."
     exit 1
 }
-echo "Step 3 completato: Directory cambiata in $HUGO_DIR."
+echo "Step 4 completato: Directory cambiata in $HUGO_DIR."
 
-# Step 4: Genera il sito
-echo "Step 4: Generazione del sito con Hugo..."
+# Step 5: Genera il sito
+echo "Step 5: Generazione del sito con Hugo..."
 hugo
 if [ $? -ne 0 ]; then
     echo "Errore: Generazione del sito con Hugo fallita. Controlla la configurazione."
     exit 1
 fi
-echo "Step 4 completato: Generazione del sito terminata."
+echo "Step 5 completato: Generazione del sito terminata."
 
-# Step 5: Aggiungi e commita i file
-echo "Step 5: Aggiunta e commit dei file..."
+# Step 6: Aggiungi e commita i file
+echo "Step 6: Aggiunta e commit dei file..."
 git add .
 git commit -m "Aggiornamento blog $(date +%F)"
 if [ $? -ne 0 ]; then
     echo "Errore: Commit dei file fallito. Controlla lo stato del repository Git."
     exit 1
 fi
-echo "Step 5 completato: Commit eseguito."
+echo "Step 6 completato: Commit eseguito."
 
-# Step 6: Push sul branch principale (per Vercel)
-echo "Step 6: Push sul branch principale per Vercel..."
+# Step 7: Push sul branch principale (per Vercel)
+echo "Step 7: Push sul branch principale per Vercel..."
 git push -u origin master
 if [ $? -ne 0 ]; then
     echo "Errore: Push sul branch principale fallito. Controlla la connessione SSH o il repository."
     exit 1
 fi
-echo "Step 6 completato: Push eseguito con successo."
+echo "Step 7 completato: Push eseguito con successo."
