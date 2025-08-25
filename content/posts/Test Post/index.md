@@ -1,7 +1,7 @@
 ---
 title: Test Post per Workflow
 date: 2025-08-25 20:00:00
-draft: false
+draft: true
 tags:
   - test
 description: Post di test per verificare il nuovo workflow
