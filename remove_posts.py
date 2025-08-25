@@ -17,6 +17,7 @@ from pathlib import Path
 # Percorsi
 OBSIDIAN_POST_DIR = "/Users/lorenzo/Library/Mobile Documents/iCloud~md~obsidian/Documents/Ken vault/08 - Blog/"
 HUGO_POST_DIR = "/Users/lorenzo/Documents/GitHub/LolloBlog/content/posts"
+HUGO_PUBLIC_DIR = "/Users/lorenzo/Documents/GitHub/LolloBlog/public/posts"
 
 # Regex per estrarre il front matter YAML
 FRONT_MATTER_REGEX = r'^---\s*\n(.*?)\n---\s*\n'
@@ -86,7 +87,7 @@ def get_hugo_posts():
     return hugo_posts
 
 def remove_hugo_post(bundle_name):
-    """Rimuove un post da Hugo (sia cartella che file markdown)."""
+    """Rimuove un post da Hugo (sia cartella che file markdown) e dai file generati."""
     removed = False
     
     # Rimuovi la cartella del page bundle
@@ -108,6 +109,18 @@ def remove_hugo_post(bundle_name):
             removed = True
         except Exception as e:
             print(f"❌ Error removing markdown file {bundle_name}.md: {e}")
+    
+    # Rimuovi i file generati nella cartella public/ 
+    # Hugo genera slug normalizzati (spazi diventano trattini, tutto minuscolo)
+    normalized_slug = bundle_name.lower().replace(" ", "-")
+    public_dir = os.path.join(HUGO_PUBLIC_DIR, normalized_slug)
+    if os.path.exists(public_dir) and os.path.isdir(public_dir):
+        try:
+            shutil.rmtree(public_dir)
+            print(f"🗑️  Removed public directory: {normalized_slug}")
+            removed = True
+        except Exception as e:
+            print(f"❌ Error removing public directory {normalized_slug}: {e}")
     
     return removed
 
