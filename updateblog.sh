@@ -6,6 +6,7 @@ HUGO_POST_DIR="/Users/lorenzo/Documents/GitHub/LolloBlog/content/posts"
 IMAGES_SCRIPT="/Users/lorenzo/Documents/GitHub/LolloBlog/images.py"
 CLEANUP_SCRIPT="/Users/lorenzo/Documents/GitHub/LolloBlog/cleanup.py"
 SYNC_EXCLUDE_SCRIPT="/Users/lorenzo/Documents/GitHub/LolloBlog/sync_exclude_drafts.py"
+CONVERT_BUNDLES_SCRIPT="/Users/lorenzo/Documents/GitHub/LolloBlog/convert_to_bundles.py"
 ORGANIZE_MULTILANG_SCRIPT="/Users/lorenzo/Documents/GitHub/LolloBlog/organize_multilang.py"
 EXCLUDE_FILE="/Users/lorenzo/Documents/GitHub/LolloBlog/.rsyncexclude"
 HUGO_DIR="/Users/lorenzo/Documents/GitHub/LolloBlog"
@@ -31,68 +32,77 @@ if [ $? -ne 0 ]; then
 fi
 echo "Step 2 completato: Sincronizzazione terminata."
 
-# Step 3: Organizza i post nelle cartelle multilingua
-echo "Step 3: Organizzazione post nelle cartelle multilingua..."
+# Step 3: Converte file markdown in page bundles
+echo "Step 3: Conversione file markdown in page bundles..."
+python3 "$CONVERT_BUNDLES_SCRIPT"
+if [ $? -ne 0 ]; then
+    echo "Errore: Conversione in page bundles fallita. Controlla il file convert_to_bundles.py."
+    exit 1
+fi
+echo "Step 3 completato: Conversione page bundles terminata."
+
+# Step 4: Organizza i post nelle cartelle multilingua
+echo "Step 4: Organizzazione post nelle cartelle multilingua..."
 python3 "$ORGANIZE_MULTILANG_SCRIPT"
 if [ $? -ne 0 ]; then
     echo "Errore: Organizzazione multilingua fallita. Controlla il file organize_multilang.py."
     exit 1
 fi
-echo "Step 3 completato: Post organizzati per lingua."
+echo "Step 4 completato: Post organizzati per lingua."
 
-# Step 4: Esegui lo script Python per sincronizzare markdown e immagini
-echo "Step 4: Esecuzione dello script Python per sincronizzare markdown e immagini..."
+# Step 5: Esegui lo script Python per sincronizzare markdown e immagini
+echo "Step 5: Esecuzione dello script Python per sincronizzare markdown e immagini..."
 python3 "$IMAGES_SCRIPT"
 if [ $? -ne 0 ]; then
     echo "Errore: Esecuzione dello script Python fallita. Controlla il file images.py o i percorsi."
     exit 1
 fi
-echo "Step 4 completato: Elaborazione Python terminata."
+echo "Step 5 completato: Elaborazione Python terminata."
 
-# Step 5: Pulizia file markdown duplicati
-echo "Step 5: Pulizia file markdown duplicati..."
+# Step 6: Pulizia file markdown duplicati
+echo "Step 6: Pulizia file markdown duplicati..."
 python3 "$CLEANUP_SCRIPT"
 if [ $? -ne 0 ]; then
     echo "Errore: Pulizia file duplicati fallita. Controlla il file cleanup.py."
     exit 1
 fi
-echo "Step 5 completato: Pulizia terminata."
+echo "Step 6 completato: Pulizia terminata."
 
-# Step 6: Vai alla directory di Hugo
-echo "Step 6: Spostamento nella directory di Hugo..."
+# Step 7: Vai alla directory di Hugo
+echo "Step 7: Spostamento nella directory di Hugo..."
 cd "$HUGO_DIR" || {
     echo "Errore: Impossibile cambiare directory in $HUGO_DIR."
     exit 1
 }
-echo "Step 6 completato: Directory cambiata in $HUGO_DIR."
+echo "Step 7 completato: Directory cambiata in $HUGO_DIR."
 
-# Step 7: Genera il sito
-echo "Step 7: Generazione del sito con Hugo..."
+# Step 8: Genera il sito
+echo "Step 8: Generazione del sito con Hugo..."
 hugo --buildDrafts --buildFuture
 if [ $? -ne 0 ]; then
     echo "Errore: Generazione del sito con Hugo fallita. Controlla la configurazione."
     exit 1
 fi
-echo "Step 7 completato: Generazione del sito terminata."
+echo "Step 8 completato: Generazione del sito terminata."
 
-# Step 8: Aggiungi e commita i file
-echo "Step 8: Aggiunta e commit dei file..."
+# Step 9: Aggiungi e commita i file
+echo "Step 9: Aggiunta e commit dei file..."
 git add .
 git commit -m "Aggiornamento blog multilingua $(date +%F)"
 if [ $? -ne 0 ]; then
     echo "Errore: Commit dei file fallito. Controlla lo stato del repository Git."
     exit 1
 fi
-echo "Step 8 completato: Commit eseguito."
+echo "Step 9 completato: Commit eseguito."
 
-# Step 9: Push sul branch principale (per Vercel)
-echo "Step 9: Push sul branch principale per Vercel..."
+# Step 10: Push sul branch principale (per Vercel)
+echo "Step 10: Push sul branch principale per Vercel..."
 git push -u origin master
 if [ $? -ne 0 ]; then
     echo "Errore: Push sul branch principale fallito. Controlla la connessione SSH o il repository."
     exit 1
 fi
-echo "Step 9 completato: Push eseguito con successo."
+echo "Step 10 completato: Push eseguito con successo."
 
 echo ""
 echo "🎉 Aggiornamento blog multilingua completato con successo!"
