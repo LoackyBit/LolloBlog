@@ -2,11 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.com/posts/blogpost---20250825/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
-  </url><url>
     <loc>https://example.com/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
+    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="it"
@@ -18,23 +15,14 @@
                 href="https://example.com/"
                 />
   </url><url>
-    <loc>https://example.com/tags/macos/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/neovim/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
-  </url><url>
     <loc>https://example.com/posts/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
+    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/programmazione/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/python/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
+    <loc>https://example.com/posts/blogpost---20250703/</loc>
+    <lastmod>2025-07-02T22:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/tags/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
+    <lastmod>2025-07-02T22:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="it"
@@ -45,15 +33,6 @@
                 hreflang="en"
                 href="https://example.com/tags/"
                 />
-  </url><url>
-    <loc>https://example.com/tags/terminale/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/vim/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/blogpost---20250703/</loc>
-    <lastmod>2025-07-02T22:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/tags/trading/</loc>
     <lastmod>2025-07-02T22:00:00+00:00</lastmod>
