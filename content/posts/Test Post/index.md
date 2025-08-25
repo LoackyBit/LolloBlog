@@ -1,6 +1,6 @@
 ---
 title: 'Test Post per Workflow'
-date: 2025-08-25 20:00:00
+date: 2025-08-25 15:00:00
 draft: false
 tags:
 - test

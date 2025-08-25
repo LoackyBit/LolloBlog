@@ -45,7 +45,7 @@ echo "Step 4 completato: Directory cambiata in $HUGO_DIR."
 
 # Step 5: Genera il sito
 echo "Step 5: Generazione del sito con Hugo..."
-hugo
+hugo --buildDrafts --buildFuture
 if [ $? -ne 0 ]; then
     echo "Errore: Generazione del sito con Hugo fallita. Controlla la configurazione."
     exit 1
