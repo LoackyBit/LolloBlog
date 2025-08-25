@@ -11,7 +11,7 @@ tags:
 - neovim
 description: Come ho configurato Vim e Neovim per esercitarmi con i problem sets di
   CS50 Python, integrando iTerm2 e cheat sheets per terminale e Vim.
-image: Pasted-image-20250825175000.png
+image: Pasted-image-20250825185813.png
 ---
 # Introduzione
 
