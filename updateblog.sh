@@ -5,27 +5,28 @@ OBSIDIAN_POST_DIR="/Users/lorenzo/Library/Mobile Documents/iCloud~md~obsidian/Do
 HUGO_POST_DIR="/Users/lorenzo/Documents/GitHub/LolloBlog/content/posts"
 IMAGES_SCRIPT="/Users/lorenzo/Documents/GitHub/LolloBlog/images.py"
 CLEANUP_SCRIPT="/Users/lorenzo/Documents/GitHub/LolloBlog/cleanup.py"
-REMOVE_POSTS_SCRIPT="/Users/lorenzo/Documents/GitHub/LolloBlog/remove_posts.py"
+SYNC_EXCLUDE_SCRIPT="/Users/lorenzo/Documents/GitHub/LolloBlog/sync_exclude_drafts.py"
+EXCLUDE_FILE="/Users/lorenzo/Documents/GitHub/LolloBlog/.rsyncexclude"
 HUGO_DIR="/Users/lorenzo/Documents/GitHub/LolloBlog"
 REPO_URL="https://github.com/LoackyBit/LolloBlog"
 
-# Step 1: Sincronizza i file markdown da Obsidian a Hugo con rsync
-echo "Step 1: Sincronizzazione dei file markdown da Obsidian a Hugo con rsync..."
-rsync -av --delete "$OBSIDIAN_POST_DIR/" "$HUGO_POST_DIR/"
+# Step 1: Crea file di esclusione per post draft
+echo "Step 1: Creazione file di esclusione per post draft..."
+python3 "$SYNC_EXCLUDE_SCRIPT"
+if [ $? -ne 0 ]; then
+    echo "Errore: Creazione file di esclusione fallita. Controlla il file sync_exclude_drafts.py."
+    exit 1
+fi
+echo "Step 1 completato: File di esclusione creato."
+
+# Step 2: Sincronizza i file markdown da Obsidian a Hugo con rsync (escludendo draft)
+echo "Step 2: Sincronizzazione dei file markdown da Obsidian a Hugo (escludendo draft)..."
+rsync -av --delete --exclude-from="$EXCLUDE_FILE" "$OBSIDIAN_POST_DIR/" "$HUGO_POST_DIR/"
 if [ $? -ne 0 ]; then
     echo "Errore: Sincronizzazione con rsync fallita. Controlla i percorsi o installa rsync."
     exit 1
 fi
-echo "Step 1 completato: Sincronizzazione terminata."
-
-# Step 2: Rimuovi post con draft=true o eliminati da Obsidian
-echo "Step 2: Rimozione post con draft=true o eliminati da Obsidian..."
-python3 "$REMOVE_POSTS_SCRIPT"
-if [ $? -ne 0 ]; then
-    echo "Errore: Rimozione post fallita. Controlla il file remove_posts.py."
-    exit 1
-fi
-echo "Step 2 completato: Rimozione post terminata."
+echo "Step 2 completato: Sincronizzazione terminata."
 
 # Step 3: Esegui lo script Python per sincronizzare markdown e immagini
 echo "Step 3: Esecuzione dello script Python per sincronizzare markdown e immagini..."
