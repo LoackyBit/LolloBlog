@@ -2,99 +2,99 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/blogpost---20250825/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
+    <loc>https://example.com/</loc>
+    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="it"
-                href="http://localhost:1313/it/"
+                href="https://example.com/it/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/"
+                href="https://example.com/"
                 />
   </url><url>
-    <loc>http://localhost:1313/tags/macos/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
+    <loc>https://example.com/posts/</loc>
+    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/neovim/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/programmazione/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/python/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
+    <loc>https://example.com/tags/</loc>
+    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="it"
-                href="http://localhost:1313/it/tags/"
+                href="https://example.com/it/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/tags/"
+                href="https://example.com/tags/"
                 />
   </url><url>
-    <loc>http://localhost:1313/tags/terminale/</loc>
+    <loc>https://example.com/tags/test/</loc>
+    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/test-post/</loc>
+    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/blogpost---20250825/</loc>
     <lastmod>2025-08-25T18:46:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/vim/</loc>
+    <loc>https://example.com/tags/macos/</loc>
     <lastmod>2025-08-25T18:46:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/test/</loc>
-    <lastmod>2025-08-25T15:00:00+00:00</lastmod>
+    <loc>https://example.com/tags/neovim/</loc>
+    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/test-post/</loc>
-    <lastmod>2025-08-25T15:00:00+00:00</lastmod>
+    <loc>https://example.com/tags/programmazione/</loc>
+    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/blogpost---20250703/</loc>
+    <loc>https://example.com/tags/python/</loc>
+    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/terminale/</loc>
+    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/vim/</loc>
+    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/blogpost---20250703/</loc>
     <lastmod>2025-07-02T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/trading/</loc>
+    <loc>https://example.com/tags/trading/</loc>
     <lastmod>2025-07-02T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/blog/</loc>
+    <loc>https://example.com/tags/blog/</loc>
     <lastmod>2025-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/first-post/</loc>
+    <loc>https://example.com/posts/first-post/</loc>
     <lastmod>2025-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/tutorial/</loc>
+    <loc>https://example.com/tags/tutorial/</loc>
     <lastmod>2025-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://example.com/archives/</loc>
   </url><url>
-    <loc>http://localhost:1313/search/search/</loc>
+    <loc>https://example.com/search/search/</loc>
   </url><url>
-    <loc>http://localhost:1313/page/archives/</loc>
+    <loc>https://example.com/page/archives/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://example.com/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="it"
-                href="http://localhost:1313/it/categories/"
+                href="https://example.com/it/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/categories/"
+                href="https://example.com/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/page/</loc>
+    <loc>https://example.com/page/</loc>
   </url><url>
-    <loc>http://localhost:1313/page/search/search/</loc>
+    <loc>https://example.com/page/search/search/</loc>
   </url><url>
-    <loc>http://localhost:1313/search/</loc>
+    <loc>https://example.com/search/</loc>
   </url>
 </urlset>
