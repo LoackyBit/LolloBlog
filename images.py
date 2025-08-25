@@ -6,7 +6,11 @@ import yaml
 # Percorsi
 OBSIDIAN_POST_DIR = "/Users/lorenzo/Library/Mobile Documents/iCloud~md~obsidian/Documents/Ken vault/08 - Blog/"  # Cartella dei post in Obsidian
 ATTACHMENTS_DIR = "/Users/lorenzo/Library/Mobile Documents/iCloud~md~obsidian/Documents/Ken vault/99 - Meta/Clipboard"  # Cartella degli allegati
-HUGO_POST_DIR = "/Users/lorenzo/Documents/GitHub/LolloBlog/content/posts"  # Cartella dei post in Hugo
+HUGO_IT_POST_DIR = "/Users/lorenzo/Documents/GitHub/LolloBlog/content/it/post"  # Cartella dei post italiani in Hugo
+HUGO_EN_POST_DIR = "/Users/lorenzo/Documents/GitHub/LolloBlog/content/en/post"  # Cartella dei post inglesi in Hugo
+
+# Lista di tutte le directory dei post Hugo per il multilingua
+HUGO_POST_DIRS = [HUGO_IT_POST_DIR, HUGO_EN_POST_DIR]
 
 # Regex per trovare i link delle immagini in formato Obsidian (con singolo !)
 IMAGE_REGEX = r'!\[\[([^]]*\.png)\]\]'
@@ -52,71 +56,86 @@ def update_front_matter(content, front_matter, original_front_matter):
             return content.replace(original_front_matter, new_front_matter)
     return content
 
-# Elabora ogni file markdown nella cartella post di Obsidian
-for filename in os.listdir(OBSIDIAN_POST_DIR):
-    if filename.endswith(".md"):
-        source_file = os.path.join(OBSIDIAN_POST_DIR, filename)
-        
-        # Controlla se il post è draft - se sì, saltalo
-        if is_draft_post(source_file):
-            print(f"Skipping draft post: {filename}")
+def process_multilingual_posts():
+    """Processa i post nelle cartelle multilingua."""
+    processed_count = 0
+    
+    # Processa i post in entrambe le cartelle lingua
+    for hugo_dir in HUGO_POST_DIRS:
+        if not os.path.exists(hugo_dir):
+            print(f"Directory not found: {hugo_dir}")
             continue
             
-        print(f"Processing file: {filename}")
-        # Nome del page bundle (es. "First Post" da "First Post.md")
-        bundle_name = os.path.splitext(filename)[0]  # Rimuove l'estensione .md
-        bundle_dir = os.path.join(HUGO_POST_DIR, bundle_name)
-        markdown_file = os.path.join(bundle_dir, "index.md")
-
-        # Crea la directory del page bundle
-        os.makedirs(bundle_dir, exist_ok=True)
-        print(f"Created bundle directory: {bundle_dir}")
-
-        # Copia il file markdown come index.md
-        source_file = os.path.join(OBSIDIAN_POST_DIR, filename)
-        shutil.copy2(source_file, markdown_file)
-        print(f"Copied {filename} to {markdown_file}")
-
-        # Leggi il contenuto del file markdown
-        with open(markdown_file, "r", encoding="utf-8") as f:
-            content = f.read()
-
-        # Estrai il front matter
-        front_matter, original_front_matter = parse_front_matter(content)
+        print(f"\n📁 Processing posts in: {hugo_dir}")
         
-        # Gestisci l'immagine specificata nel parametro 'image' del front matter
-        if 'image' in front_matter and front_matter['image']:
-            image_name = front_matter['image']
-            new_image_name = image_name.replace(" ", "-")
-            src_path = os.path.join(ATTACHMENTS_DIR, image_name)
-            dst_path = os.path.join(bundle_dir, new_image_name)
-            if os.path.exists(src_path):
-                shutil.copy2(src_path, dst_path)
-                print(f"Copied featured image: {new_image_name} to {bundle_dir}")
-            else:
-                print(f"Warning: Featured image {image_name} not found in {ATTACHMENTS_DIR}")
+        for bundle_name in os.listdir(hugo_dir):
+            bundle_path = os.path.join(hugo_dir, bundle_name)
+            
+            # Salta file che non sono cartelle
+            if not os.path.isdir(bundle_path):
+                continue
+                
+            # Salta cartelle che iniziano con punto
+            if bundle_name.startswith('.'):
+                continue
+            
+            markdown_file = os.path.join(bundle_path, "index.md")
+            if not os.path.exists(markdown_file):
+                print(f"⚠️  No index.md found in {bundle_path}")
+                continue
+                
+            print(f"📝 Processing bundle: {bundle_name}")
+            processed_count += 1
+            
+            # Processa le immagini per questo post
+            process_images_for_post(bundle_path, markdown_file)
+    
+    return processed_count
 
-        # Aggiorna il front matter con il nome dell'immagine modificato
-        content = update_front_matter(content, front_matter, original_front_matter)
+def process_images_for_post(bundle_dir, markdown_file):
+    """Processa le immagini per un singolo post."""
+    # Leggi il contenuto del file markdown
+    with open(markdown_file, "r", encoding="utf-8") as f:
+        content = f.read()
 
-        # Trova e sostituisci i link delle immagini nel contenuto
-        def replace_image(match):
-            image_name = match.group(1)
-            new_image_name = image_name.replace(" ", "-")
-            src_path = os.path.join(ATTACHMENTS_DIR, image_name)
-            dst_path = os.path.join(bundle_dir, new_image_name)
-            if os.path.exists(src_path):
-                shutil.copy2(src_path, dst_path)
-                print(f"Copied content image: {new_image_name} to {bundle_dir}")
-            else:
-                print(f"Warning: Content image {image_name} not found in {ATTACHMENTS_DIR}")
-            return f"![{new_image_name}]({new_image_name})"
+    # Estrai il front matter
+    front_matter, original_front_matter = parse_front_matter(content)
+    
+    # Gestisci l'immagine specificata nel parametro 'image' del front matter
+    if 'image' in front_matter and front_matter['image']:
+        image_name = front_matter['image']
+        new_image_name = image_name.replace(" ", "-")
+        src_path = os.path.join(ATTACHMENTS_DIR, image_name)
+        dst_path = os.path.join(bundle_dir, new_image_name)
+        if os.path.exists(src_path):
+            shutil.copy2(src_path, dst_path)
+            print(f"  ✅ Copied featured image: {new_image_name}")
+        else:
+            print(f"  ❌ Featured image {image_name} not found")
 
-        new_content = re.sub(IMAGE_REGEX, replace_image, content)
+    # Aggiorna il front matter con il nome dell'immagine modificato
+    content = update_front_matter(content, front_matter, original_front_matter)
 
-        # Salva il file modificato
-        with open(markdown_file, "w", encoding="utf-8") as f:
-            f.write(new_content)
-            print(f"Updated and saved: {markdown_file}")
+    # Trova e sostituisci i link delle immagini nel contenuto
+    def replace_image(match):
+        image_name = match.group(1)
+        new_image_name = image_name.replace(" ", "-")
+        src_path = os.path.join(ATTACHMENTS_DIR, image_name)
+        dst_path = os.path.join(bundle_dir, new_image_name)
+        if os.path.exists(src_path):
+            shutil.copy2(src_path, dst_path)
+            print(f"  ✅ Copied content image: {new_image_name}")
+        else:
+            print(f"  ❌ Content image {image_name} not found")
+        return f"![{new_image_name}]({new_image_name})"
 
-print("Markdown files processed and images copied successfully.")
+    new_content = re.sub(IMAGE_REGEX, replace_image, content)
+
+    # Salva il file modificato
+    with open(markdown_file, "w", encoding="utf-8") as f:
+        f.write(new_content)
+
+# Processo principale
+print("🖼️  Starting multilingual image processing...")
+processed = process_multilingual_posts()
+print(f"\n✅ Processing completed! Processed {processed} post bundles.")

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="A step-by-step guide on how I created my blog using Obsidian, Hugo, GitHub, and Vercel, with a guide to using the Stack theme.">
+<title>How I Built My Blog with Hugo and the Stack Theme</title>
+
+<link rel='canonical' href='http://localhost:1313/en/posts/first-post/'>
+
+<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="How I Built My Blog with Hugo and the Stack Theme">
+<meta property='og:description' content="A step-by-step guide on how I created my blog using Obsidian, Hugo, GitHub, and Vercel, with a guide to using the Stack theme.">
+<meta property='og:url' content='http://localhost:1313/en/posts/first-post/'>
+<meta property='og:site_name' content='LolloBlog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='blog' /><meta property='article:tag' content='tutorial' /><meta property='article:published_time' content='2025-06-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-13T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/en/posts/first-post/Pasted-image-20250613120635.png' />
+<meta name="twitter:title" content="How I Built My Blog with Hugo and the Stack Theme">
+<meta name="twitter:description" content="A step-by-step guide on how I created my blog using Obsidian, Hugo, GitHub, and Vercel, with a guide to using the Stack theme."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/en/posts/first-post/Pasted-image-20250613120635.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/en/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/avatar_hu_5093f2aa7149e431.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💻</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/en">LolloBlog</a></h1>
+            <h2 class="site-description">My technology and programming blog</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/LoackyBit'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/LoackyBit'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/en/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/page/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/page/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" >Italiano</option>
+                                
+                                    <option value="http://localhost:1313/en/" selected>English</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/en/posts/first-post/">
+                <img src="/en/posts/first-post/Pasted-image-20250613120635_hu_691568f697764c7b.png"
+                        srcset="/en/posts/first-post/Pasted-image-20250613120635_hu_691568f697764c7b.png 800w, /en/posts/first-post/Pasted-image-20250613120635_hu_171981a498318632.png 1600w"
+                        width="800" 
+                        height="630" 
+                        loading="lazy"
+                        alt="Featured image of post How I Built My Blog with Hugo and the Stack Theme" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/en/posts/first-post/">How I Built My Blog with Hugo and the Stack Theme</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            A step-by-step guide on how I created my blog using Obsidian, Hugo, GitHub, and Vercel, with a guide to using the Stack theme.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">13 Jun 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="how-i-built-my-blog-with-hugo-and-the-stack-theme">How I Built My Blog with Hugo and the Stack Theme
+</h1><p>Hello everyone! In this post, I’ll share how I built my blog using <strong>Obsidian</strong>, <strong>Hugo</strong>, <strong>GitHub</strong>, and <strong>Hostinger</strong>, following a tutorial by NetworkChuck and customizing it with the <strong>Stack</strong> theme (<a class="link" href="https://stack.jimmycai.com/"  target="_blank" rel="noopener"
+    >https://stack.jimmycai.com/</a>). I’ll also guide you through configuring the Stack theme to create a sleek and functional blog.</p>
+<h2 id="why-a-blog">Why a Blog?
+</h2><p>Inspired by <em>Building a Second Brain</em> by Tiago Forte, I started this blog to share my ideas and organize my thoughts in a way that’s accessible and valuable. My goal is to express what I’m learning and provide insights for myself, my friends, family, and anyone interested in my perspective.</p>
+<h2 id="how-i-built-the-site">How I Built the Site
+</h2><p>Here are the main steps I followed to create my blog, adapted from NetworkChuck’s tutorial <div class="video-wrapper">
+    <iframe loading="lazy" 
+            src="https://www.youtube.com/embed/dnE7c0ELEH8" 
+            allowfullscreen 
+            title="YouTube Video"
+    >
+    </iframe>
+</div>
+.</p>
+<h3 id="1-writing-posts-with-obsidian">1. Writing Posts with Obsidian
+</h3><p>I use <strong>Obsidian</strong>, a powerful note-taking app, to write my blog posts in markdown. All posts are stored in a <code>post</code> folder within my Obsidian vault. Each post starts with a front matter block, which includes metadata like title, date, and tags. For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+++</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;My First Post&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">date</span> = <span style="color:#ae81ff">2025-06-13</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">draft</span> = <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tags</span> = [<span style="color:#e6db74">&#34;test&#34;</span>, <span style="color:#e6db74">&#34;blog&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+++</span>
+</span></span></code></pre></div><p>Obsidian keeps my notes private, and only files in the <code>post</code> folder are published. To ensure images work (though I’m still troubleshooting this), I plan to use a Python script to sync images from Obsidian’s <code>attachments</code> folder to Hugo’s <code>static/images</code> folder.</p>
+<h3 id="2-generating-the-site-with-hugo">2. Generating the Site with Hugo
+</h3><p><strong>Hugo</strong> is a static site generator that transforms markdown files into a website. Here’s how I set it up:</p>
+<ul>
+<li>
+<p><strong>Installation</strong>: I installed Hugo on my Mac using Homebrew (<code>brew install hugo</code>). I also installed Git and Go as prerequisites.</p>
+</li>
+<li>
+<p><strong>Site Creation</strong>: I created a new Hugo site with <code>hugo new site BlogName</code>.</p>
+</li>
+<li>
+<p><strong>Theme Setup</strong>: I chose the <strong>Stack</strong> theme (<a class="link" href="https://stack.jimmycai.com/"  target="_blank" rel="noopener"
+    >https://stack.jimmycai.com/</a>) for its clean, card-style design. I installed it with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git submodule add https://github.com/CaiJimmy/hugo-theme-stack themes/hugo-theme-stack
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Configuration</strong>: I configured Hugo in <code>hugo.toml</code> by <code>nano</code> command to use the Stack theme:</p>
+</li>
+</ul>
+<pre tabindex="0"><code>baseURL = &#34;https://example.com/&#34;  # Replace with your domain
+languageCode = &#34;en-us&#34;
+title = &#34;First Post&#34;
+theme = &#34;hugo-theme-stack&#34;
+
+[params]
+  mainSections = [&#34;post&#34;]
+</code></pre><ul>
+<li>
+<p><strong>Syncing Posts</strong>: I use <code>rsync</code> to copy posts from Obsidian’s <code>post</code> folder to Hugo’s <code>content/post</code> folder:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rsync -av --delete ~/path/to/obsidian/post/ ~/path/to/BlogName/content/post/
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Testing Locally</strong>: I run <code>hugo server -t hugo-theme-stack</code> to preview the site at <code>http://localhost:1313</code>.</p>
+</li>
+</ul>
+<h3 id="3-version-control-with-github">3. Version Control with GitHub
+</h3><p>I use <strong>GitHub</strong> to store my site’s code and enable collaboration. Here’s the setup:</p>
+<ul>
+<li><strong>Repository Creation</strong>: I created a repository named <code>BlogName</code> on GitHub.</li>
+<li><strong>SSH Authentication</strong>: I generated an SSH key with <code>ssh-keygen -t rsa -b 4096 -C &quot;my-email@example.com&quot;</code>. The keys were initially saved in the wrong directory, but I moved them to <code>~/.ssh/id_rsa</code> and <code>~/.ssh/id_rsa.pub</code>, then added the public key to GitHub.</li>
+<li><strong>Pushing Code</strong>: I initialized a Git repository in <code>BlogName</code>, added a remote (<code>git remote add origin git@github.com:username/BlogName.git</code>), and pushed changes:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Initial commit&#34;</span>
+</span></span><span style="display:flex;"><span>git push origin master
+</span></span></code></pre></div></li>
+<li><strong>Publishing</strong>: I pushed the <code>public</code> folder to a <code>hostinger</code> branch for deployment:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git subtree push --prefix public origin hostinger
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="4-hosting-with-vercel">4. Hosting with Vercel
+</h3><p>Instead using <strong>Hostinger</strong> I deployed the site using <strong>Vercel</strong>:</p>
+<ul>
+<li><strong>Site Setup</strong>: I created a new site on Vercel, linked to my GitHub repository</li>
+<li><strong>Webhook</strong>: I set up a webhook on GitHub to auto-deploy updates when I push to the <code>master</code> branch.</li>
+</ul>
+<h3 id="5-automating-the-workflow">5. Automating the Workflow
+</h3><p>To streamline publishing, I created a Bash script (<code>updateblog.sh</code>) that:</p>
+<ul>
+<li>Syncs posts with <code>rsync</code>.</li>
+<li>Runs the Python script for images <code>images.py</code>.</li>
+<li>Generates the site with <code>hugo</code>.</li>
+<li>Commits and pushes to GitHub.</li>
+</ul>
+<p>Here’s the script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Variabili</span>
+</span></span><span style="display:flex;"><span>OBSIDIAN_POST_DIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;path here&#34;</span>
+</span></span><span style="display:flex;"><span>HUGO_POST_DIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;path here&#34;</span>
+</span></span><span style="display:flex;"><span>IMAGES_SCRIPT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;path here&#34;</span>
+</span></span><span style="display:flex;"><span>HUGO_DIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;path here&#34;</span>
+</span></span><span style="display:flex;"><span>REPO_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;link here&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 1: Sincronizza i file markdown da Obsidian a Hugo con rsync</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 1: Sincronizzazione dei file markdown da Obsidian a Hugo con rsync...&#34;</span>
+</span></span><span style="display:flex;"><span>rsync -av --delete <span style="color:#e6db74">&#34;</span>$OBSIDIAN_POST_DIR<span style="color:#e6db74">/&#34;</span> <span style="color:#e6db74">&#34;</span>$HUGO_POST_DIR<span style="color:#e6db74">/&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? -ne <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Errore: Sincronizzazione con rsync fallita. Controlla i percorsi o installa rsync.&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 1 completato: Sincronizzazione terminata.&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 2: Esegui lo script Python per sincronizzare markdown e immagini</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 2: Esecuzione dello script Python per sincronizzare markdown e immagini...&#34;</span>
+</span></span><span style="display:flex;"><span>python3 <span style="color:#e6db74">&#34;</span>$IMAGES_SCRIPT<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? -ne <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Errore: Esecuzione dello script Python fallita. Controlla il file images.py o i percorsi.&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 2 completato: Elaborazione Python terminata.&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 3: Vai alla directory di Hugo</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 3: Spostamento nella directory di Hugo...&#34;</span>
+</span></span><span style="display:flex;"><span>cd <span style="color:#e6db74">&#34;</span>$HUGO_DIR<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">||</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Errore: Impossibile cambiare directory in </span>$HUGO_DIR<span style="color:#e6db74">.&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 3 completato: Directory cambiata in </span>$HUGO_DIR<span style="color:#e6db74">.&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 4: Genera il sito</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 4: Generazione del sito con Hugo...&#34;</span>
+</span></span><span style="display:flex;"><span>hugo
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? -ne <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Errore: Generazione del sito con Hugo fallita. Controlla la configurazione.&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 4 completato: Generazione del sito terminata.&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 5: Aggiungi e commita i file</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 5: Aggiunta e commit dei file...&#34;</span>
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Aggiornamento blog </span><span style="color:#66d9ef">$(</span>date +%F<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? -ne <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Errore: Commit dei file fallito. Controlla lo stato del repository Git.&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 5 completato: Commit eseguito.&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 6: Push sul branch principale (per Vercel)</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 6: Push sul branch principale per Vercel...&#34;</span>
+</span></span><span style="display:flex;"><span>git push -u origin master
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? -ne <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Errore: Push sul branch principale fallito. Controlla la connessione SSH o il repository.&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Step 6 completato: Push eseguito con successo.&#34;</span>&gt;<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p><strong>Script Name</strong>: <code>updateblog.sh</code></p>
+<p>Replace the <code>paths</code> and <code>username</code> with your own. Run it after making it executable (<code>chmod +x updateblog.sh</code>).</p>
+<h2 id="guide-to-using-the-stack-theme">Guide to Using the Stack Theme
+</h2><p>The <strong>Stack</strong> theme (<a class="link" href="https://stack.jimmycai.com/"  target="_blank" rel="noopener"
+    >https://stack.jimmycai.com/</a>) is a card-style theme designed for bloggers. Here’s how to configure it, based on its documentation (<a class="link" href="https://stack.jimmycai.com/config/%29"  target="_blank" rel="noopener"
+    >https://stack.jimmycai.com/config/)</a>.</p>
+<h3 id="installation">Installation
+</h3><ol>
+<li>
+<p>Add the theme as a Git submodule:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git submodule add https://github.com/CaiJimmy/hugo-theme-stack themes/hugo-theme-stack
+</span></span></code></pre></div></li>
+<li>
+<p>Update <code>hugo.toml</code> to set the theme:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">theme</span> = <span style="color:#e6db74">&#34;hugo-theme-stack&#34;</span>
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="configuration">Configuration
+</h3><p>Stack supports TOML and YAML configuration, with a planned migration to TOML. For a full list of options, check the <code>config.yaml</code> file in the theme’s root or the documentation (<a class="link" href="https://stack.jimmycai.com/config/%29"  target="_blank" rel="noopener"
+    >https://stack.jimmycai.com/config/)</a>.</p>
+<h3 id="creating-posts">Creating Posts
+</h3><p>Posts need a front matter block. Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">title </span>: <span style="color:#e6db74">&#34;Your Post Title&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">date </span>: <span style="color:#e6db74">2025-06-13</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">draft </span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">tags </span>: [<span style="color:#e6db74">&#34;tag1&#34;</span>, <span style="color:#e6db74">&#34;tag2&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">description </span>: <span style="color:#e6db74">&#34;A short description&#34;</span>
+</span></span><span style="display:flex;"><span>---
+</span></span></code></pre></div><ul>
+<li>Set <code>draft : false</code> to publish the post.</li>
+<li>Use <code>image</code> to add a cover image</li>
+</ul>
+<h3 id="testing">Testing
+</h3><p>Run <code>hugo server -t hugo-theme-stack --buildDrafts</code> to preview changes locally. Ensure posts appear in the card layout on <code>http://localhost:1313</code>.</p>
+<p>Happy blogging!</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/en/tags/blog/">Blog</a>
+        
+            <a href="/en/tags/tutorial/">Tutorial</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 Lorenzo
+    </section>
+    
+    <section class="powerby">
+        
+            LolloBlog <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.87d558841f4d9dc4427e94e6843717e684f6539ce0607f0b9bf02b610982e6c1.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

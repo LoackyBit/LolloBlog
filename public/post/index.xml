@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on LolloBlog</title>
+        <link>https://example.com/post/</link>
+        <description>Recent content in Posts on LolloBlog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>it-IT</language>
+        <copyright>Lorenzo</copyright>
+        <lastBuildDate>Mon, 25 Aug 2025 18:46:00 +0000</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Imparare Vim e Neovim: La Mia Configurazione per Programmazione Python</title>
+        <link>https://example.com/post/blogpost---20250825/</link>
+        <pubDate>Mon, 25 Aug 2025 18:46:00 +0000</pubDate>
+        
+        <guid>https://example.com/post/blogpost---20250825/</guid>
+        <description>&lt;img src="https://example.com/post/blogpost---20250825/Pasted-image-20250825185813.png" alt="Featured image of post Imparare Vim e Neovim: La Mia Configurazione per Programmazione Python" /&gt;&lt;h1 id=&#34;introduzione&#34;&gt;Introduzione
+&lt;/h1&gt;&lt;p&gt;Negli ultimi giorni ho deciso di immergermi nello studio di Vim, un editor di testo potente ma notoriamente ostico, per migliorare le mie competenze di programmazione. Sto seguendo il corso &lt;a class=&#34;link&#34; href=&#34;https://cs50.harvard.edu/python/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;CS50&amp;rsquo;s Introduction to Programming with Python&lt;/a&gt; di Harvard, che include una serie di &lt;em&gt;problem sets&lt;/em&gt; – esercizi di coding che richiedono di sviluppare soluzioni a problemi specifici. Per rendere l’esperienza più formativa, ho scelto di scrivere questi programmi usando Vim, o meglio, Neovim, direttamente dal terminale. In questo post racconto come ho configurato il mio ambiente di lavoro, integrando Visual Studio Code, iTerm2 e cheat sheets per Vim e il terminale macOS, e come ho superato alcune sfide iniziali.&lt;/p&gt;
+&lt;h2 id=&#34;contesto&#34;&gt;Contesto
+&lt;/h2&gt;&lt;p&gt;Il mio obiettivo era duplice: imparare a usare Vim in modo efficace e fare pratica con i comandi del terminale macOS. I &lt;em&gt;problem sets&lt;/em&gt; di CS50, come quello sulle &lt;a class=&#34;link&#34; href=&#34;https://cs50.harvard.edu/python/psets/5/test_plates/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Vanity Plates&lt;/a&gt;, sono perfetti per esercitarsi, ma di solito li risolvevo usando un container Docker su Visual Studio Code (VS Code). Ho dovuto quindi decidere se usare Vim come estensione su VS Code o passare a Neovim direttamente dal terminale.&lt;/p&gt;
+&lt;p&gt;Dopo un po’ di esperimenti, ho optato per Neovim da terminale, perché mi permetteva di approfondire sia Vim che i comandi del terminale. Tuttavia, ho dovuto affrontare alcune configurazioni tecniche e trovare un modo per rendere il processo più efficiente, soprattutto per imparare i comandi di Vim e del terminale senza perdermi tra mille risorse.&lt;/p&gt;
+&lt;h2 id=&#34;configurazione-di-visual-studio-code-con-vim&#34;&gt;Configurazione di Visual Studio Code con Vim
+&lt;/h2&gt;&lt;p&gt;Inizialmente, ho provato a integrare Vim su VS Code. Ho installato due estensioni:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;VSCode Neovim&lt;/a&gt;&lt;/strong&gt;: Porta le funzionalità di Neovim direttamente in VS Code.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://marketplace.visualstudio.com/items?itemName=wrathcodes.nvim-ui-plus&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Nvim UI+&lt;/a&gt;&lt;/strong&gt;: Aggiunge un’interfaccia colorata che evidenzia la modalità di Vim (normale, inserimento, visiva, ecc.).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;L’installazione di queste estensioni non è stata sufficiente. Ho dovuto modificare il file di configurazione di Neovim, &lt;code&gt;init.lua&lt;/code&gt;, per integrare l’estensione Nvim UI+. Questo ha richiesto l’aggiunta di alcune righe specifiche, ma per evitare errori quando usavo Neovim fuori da VS Code, ho racchiuso il codice in un blocco condizionale &lt;code&gt;if&lt;/code&gt;. Ecco un esempio di come ho configurato il file:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-lua&#34; data-lang=&#34;lua&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; vim.g.vscode &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;-- Configurazioni specifiche per VS Code&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Questa configurazione ha funzionato, ma ho sentito che lavorare direttamente su VS Code mi stava tenendo lontano dall’esperienza “pura” del terminale, che volevo esplorare per imparare i comandi di sistema.&lt;/p&gt;
+&lt;h2 id=&#34;configurazione-di-iterm2&#34;&gt;Configurazione di iTerm2
+&lt;/h2&gt;&lt;p&gt;Per usare Neovim dal terminale, ho deciso di passare a &lt;a class=&#34;link&#34; href=&#34;https://iterm2.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;iTerm2&lt;/a&gt;, un sostituto avanzato del terminale macOS standard. iTerm2 offre molte funzionalità, ma ho avuto un problema: non riuscivo a muovermi tra le parole usando la combinazione &lt;strong&gt;Option + frecce direzionali&lt;/strong&gt;, una scorciatoia essenziale per la navigazione veloce.&lt;/p&gt;
+&lt;p&gt;Ho provato a cambiare l’impostazione dei tasti speciali da “Meta” a “Esc+” seguendo alcune guide, come quella su &lt;a class=&#34;link&#34; href=&#34;https://sourabhbajaj.com/mac-setup/iTerm/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;iTerm2 Setup&lt;/a&gt;, ma non ha risolto il problema. Alla fine, ho creato una scorciatoia personalizzata in iTerm2 per emulare il movimento tra le parole. Ecco i passaggi che ho seguito:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Apri iTerm2 &amp;gt; &lt;strong&gt;Preferences&lt;/strong&gt; &amp;gt; &lt;strong&gt;Profiles&lt;/strong&gt; &amp;gt; &lt;strong&gt;Keys&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Aggiungi una nuova scorciatoia:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Keyboard Shortcut&lt;/strong&gt;: &lt;code&gt;Option + ←&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Action&lt;/strong&gt;: &lt;code&gt;Send Escape Sequence&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Esc+&lt;/strong&gt;: &lt;code&gt;b&lt;/code&gt; (per spostarsi indietro di una parola).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Ripeti per &lt;code&gt;Option + →&lt;/code&gt; con &lt;code&gt;Esc+ f&lt;/code&gt; (per spostarsi avanti).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Questa soluzione ha reso la navigazione molto più fluida. Per approfondire, ho anche consultato la documentazione di iTerm2 su &lt;a class=&#34;link&#34; href=&#34;https://iterm2.com/documentation-csiu.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;CSI u&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;passaggio-a-neovim-da-terminale&#34;&gt;Passaggio a Neovim da Terminale
+&lt;/h2&gt;&lt;p&gt;Alla fine, ho deciso di abbandonare VS Code per usare Neovim direttamente da iTerm2. Questo mi ha permesso di concentrarmi sia su Vim che sui comandi del terminale. Tuttavia, mi sono accorto che non conoscevo molti comandi essenziali, come quelli per copiare file o navigare rapidamente. Inizialmente, ho cercato video su YouTube, come &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=gd7BXuUQ91w&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;“60 Linux Commands you NEED to know”&lt;/a&gt;, ma ho trovato questo approccio poco efficiente per un accesso rapido alle informazioni.&lt;/p&gt;
+&lt;h2 id=&#34;cheat-sheets-la-svolta-per-lefficienza&#34;&gt;Cheat Sheets: La Svolta per l’Efficienza
+&lt;/h2&gt;&lt;p&gt;Per velocizzare l’apprendimento, ho cercato dei &lt;em&gt;cheat sheets&lt;/em&gt; per Vim e il terminale macOS. Dopo aver esplorato varie risorse, come &lt;a class=&#34;link&#34; href=&#34;https://vim.rtorr.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Vim Cheat Sheet&lt;/a&gt; e &lt;a class=&#34;link&#34; href=&#34;https://phoenixnap.com/kb/mac-terminal-commands&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Mac Terminal Commands Cheat Sheet&lt;/a&gt;, ho scaricato due PDF utili:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://phoenixnap.com/kb/wp-content/uploads/2021/11/vim-commands-cheat-sheet-by-pnap.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Vim Commands Cheat Sheet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://phoenixnap.com/kb/wp-content/uploads/2023/05/mac-terminal-commands-cheat-sheet-pdf.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Mac Terminal Commands Cheat Sheet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ho stampato questi cheat sheets e li ho appesi sulla lavagna davanti alla mia scrivania, così da averli sempre a portata di mano. Questo mi ha permesso di consultare rapidamente comandi come &lt;code&gt;cp&lt;/code&gt; per copiare file o &lt;code&gt;:w&lt;/code&gt; per salvare in Vim, senza dover cercare online ogni volta.&lt;/p&gt;
+&lt;h2 id=&#34;sfide-e-soluzioni&#34;&gt;Sfide e Soluzioni
+&lt;/h2&gt;&lt;p&gt;Ecco alcune delle sfide che ho affrontato e come le ho risolte:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Navigazione lenta in Vim&lt;/strong&gt;: Ho usato il tutor integrato di Vim (&lt;code&gt;:Tutor&lt;/code&gt;) per imparare i comandi base e ho tenuto il cheat sheet a portata di mano per comandi più avanzati.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Comandi terminale sconosciuti&lt;/strong&gt;: Ho memorizzato comandi essenziali come &lt;code&gt;pwd&lt;/code&gt; (stampa percorso corrente) e &lt;code&gt;cp file1 file2&lt;/code&gt; (copia file) grazie al cheat sheet e a risorse come &lt;a class=&#34;link&#34; href=&#34;https://www.baeldung.com/linux/files-quickly-duplicate-multiple&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Baeldung on Linux&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configurazione di iTerm2&lt;/strong&gt;: La creazione di scorciatoie personalizzate ha risolto il problema della navigazione con Option + frecce.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;risultati&#34;&gt;Risultati
+&lt;/h2&gt;&lt;p&gt;Ora sono pronto a programmare i &lt;em&gt;problem sets&lt;/em&gt; di CS50 usando Neovim su iTerm2. L’ambiente è configurato, i cheat sheets sono sulla mia lavagna e sto iniziando a sentirmi più a mio agio con Vim e il terminale. Scrivere codice in questo modo è più impegnativo rispetto a usare un IDE come VS Code, ma mi sta aiutando a capire meglio il flusso di lavoro di un programmatore e a padroneggiare strumenti potenti.&lt;/p&gt;
+&lt;h2 id=&#34;conclusione&#34;&gt;Conclusione
+&lt;/h2&gt;&lt;p&gt;Imparare Vim e configurare un ambiente di lavoro basato su terminale non è stato semplice, ma è un investimento che sta già dando i suoi frutti. I cheat sheets e una configurazione personalizzata di iTerm2 hanno fatto la differenza, rendendo il processo più fluido. Se anche tu stai pensando di provare Vim o Neovim, ti consiglio di iniziare con il tutor integrato e di tenere a portata di mano un cheat sheet per non perderti. Hai mai provato a configurare il tuo terminale per la programmazione? Fammi sapere nei commenti come organizzi il tuo flusso di lavoro!&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;note-tecniche&#34;&gt;Note Tecniche
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Risorse utilizzate&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://cs50.harvard.edu/python/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;CS50 Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://iterm2.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;iTerm2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ohmyzsh/ohmyzsh&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Oh My Zsh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Cheat sheets: &lt;a class=&#34;link&#34; href=&#34;https://phoenixnap.com/kb/vim-commands-cheat-sheet&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Vim&lt;/a&gt; e &lt;a class=&#34;link&#34; href=&#34;https://phoenixnap.com/kb/mac-terminal-commands&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Mac Terminal&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Da TradingView a MT5: Automazione della TrendBars Strategy su EUR/USD</title>
+        <link>https://example.com/post/blogpost---20250703/</link>
+        <pubDate>Wed, 02 Jul 2025 22:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/post/blogpost---20250703/</guid>
+        <description>&lt;img src="https://example.com/post/blogpost---20250703/Pasted-image-20250703230925.png" alt="Featured image of post Da TradingView a MT5: Automazione della TrendBars Strategy su EUR/USD" /&gt;&lt;h1 id=&#34;da-tradingview-a-mt5-il-contesto&#34;&gt;Da TradingView a MT5: il contesto
+&lt;/h1&gt;&lt;p&gt;TradingView offre uno degli ambienti migliori per lo sviluppo e il test di strategie tramite Pine Script, ma ha dei limiti importanti:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Non consente trading automatico diretto su conti reali.&lt;/li&gt;
+&lt;li&gt;È più orientato all’analisi visuale che all’automazione.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;MetaTrader 5, invece, è la piattaforma di riferimento per il trading automatico su Forex e CFD, grazie alla sua flessibilità e alla possibilità di utilizzare Expert Advisor programmati in MQL5.&lt;/p&gt;
+&lt;h1 id=&#34;la-strategia-trendbars-su-base-ema-atr-e-hlc3&#34;&gt;La Strategia: TrendBars su base EMA, ATR e HLC3
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/post/blogpost---20250703/Pasted-image-20250703230925.png&#34;
+	width=&#34;2940&#34;
+	height=&#34;1912&#34;
+	srcset=&#34;https://example.com/post/blogpost---20250703/Pasted-image-20250703230925_hu_bd70e21a98b0a81.png 480w, https://example.com/post/blogpost---20250703/Pasted-image-20250703230925_hu_230383c32e4c506d.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pasted-image-20250703230925.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;369px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;La strategia TrendBars nasce da una semplice idea: colorare le barre in base alla deviazione della media HLC3 (media di High, Low e Close) rispetto a una EMA (media mobile esponenziale) dinamicamente &amp;ldquo;ampliata&amp;rdquo; da una banda di tolleranza calcolata tramite ATR (Average True Range) e un moltiplicatore.&lt;/p&gt;
+&lt;p&gt;Le regole operative sono:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Long&lt;/strong&gt; se HLC3 &amp;gt; EMA + tolleranza&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Short&lt;/strong&gt; se HLC3 &amp;lt; EMA - tolleranza&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flat/chiusura&lt;/strong&gt; se HLC3 rientra nella banda neutrale tra EMA - tolleranza ed EMA + tolleranza&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Le uscite sono sempre &amp;ldquo;a mercato&amp;rdquo;, senza target o stop fisso.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;specifiche-operative&#34;&gt;Specifiche operative
+&lt;/h1&gt;&lt;p&gt;Per la mia applicazione pratica ho scelto:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Strumento:&lt;/strong&gt; EUR/USD&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Capitale iniziale:&lt;/strong&gt; 1000 USD&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Leva:&lt;/strong&gt; 1:30&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Volume fisso per operazione:&lt;/strong&gt; 30000 USD (0.3 lotti standard su EUR/USD)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Commissione:&lt;/strong&gt; 0,00006 USD per unità (da confrontare e adattare in base al broker MT5)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Margine massimo impegnato:&lt;/strong&gt; 100% del capitale&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Timeframe:&lt;/strong&gt; 5m&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Grafico:&lt;/strong&gt; Heikin Ashi (come su TradingView)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Piattaforma:&lt;/strong&gt; MT5 installato su MacBook Air M3 tramite Wine&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;la-conversione-da-pine-script-a-mql5&#34;&gt;La conversione: da Pine Script a MQL5
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/post/blogpost---20250703/Pasted-image-20250703234720.png&#34;
+	width=&#34;2940&#34;
+	height=&#34;1912&#34;
+	srcset=&#34;https://example.com/post/blogpost---20250703/Pasted-image-20250703234720_hu_8e83308d400b29d3.png 480w, https://example.com/post/blogpost---20250703/Pasted-image-20250703234720_hu_e8b02a728b8ed7e3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pasted-image-20250703234720.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;369px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;1-analisi-e-porting-della-logica&#34;&gt;1. Analisi e porting della logica
+&lt;/h2&gt;&lt;p&gt;Ho analizzato il Pine Script originale, identificando i punti chiave:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Calcolo EMA e ATR su dati regolari&lt;/li&gt;
+&lt;li&gt;Calcolo HLC3 e condizioni di trend su dati Heikin Ashi&lt;/li&gt;
+&lt;li&gt;Gestione dinamica della banda di tolleranza&lt;/li&gt;
+&lt;li&gt;Selezione e visualizzazione colore barre&lt;/li&gt;
+&lt;li&gt;Regole di ingresso/uscita e gestione delle posizioni&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-scrittura-dellexpert-advisor-in-mql5&#34;&gt;2. Scrittura dell’Expert Advisor in MQL5
+&lt;/h2&gt;&lt;p&gt;Ho realizzato un EA che:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Replica fedelmente la logica del Pine Script (incluso il calcolo di Heikin Ashi su OHLC standard, poiché su MT5 non esiste un vero e proprio grafico Heikin Ashi, ma un’indicatore a parte)&lt;/li&gt;
+&lt;li&gt;Gestisce la dimensione fissa dell’ordine, espressa in percentuale rispetto al capitale, e verifica i requisiti di margine prima di ogni operazione&lt;/li&gt;
+&lt;li&gt;Mostra sul grafico tutte le informazioni utili: trend, valori EMA, ATR, tolleranza, colore barra, stato posizioni, ecc.&lt;/li&gt;
+&lt;li&gt;Consente di visualizzare la EMA colorata, le bande di tolleranza e tutte le condizioni di ingresso/uscita&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-adattamento-alle-condizioni-del-broker-mt5&#34;&gt;3. Adattamento alle condizioni del broker MT5
+&lt;/h2&gt;&lt;p&gt;Essendo i parametri di marginazione e commissione diversi tra Capital.com (usato in TradingView) e il mio nuovo broker MT5, ho inserito nel codice la possibilità di modificare facilmente:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Commissione&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Calcolo del margine&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dimensione minima/massima del lotto&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-problemi-di-visualizzazione-su-mt5&#34;&gt;4. Problemi di Visualizzazione su MT5
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Innanzitutto non esiste la possibilità di visualizzare il grafico Heiken Ashi, se non tramite un indicatore.
+&lt;img src=&#34;https://example.com/post/blogpost---20250703/Pasted-image-20250703225820.png&#34;
+	width=&#34;1324&#34;
+	height=&#34;690&#34;
+	srcset=&#34;https://example.com/post/blogpost---20250703/Pasted-image-20250703225820_hu_c07abf67cc6663e4.png 480w, https://example.com/post/blogpost---20250703/Pasted-image-20250703225820_hu_904d8189211a5c0.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pasted-image-20250703225820.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;460px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;L’Expert Advisor che ho sviluppato non è in grado di disegnare a grafico le candele Heikin Ashi modificate, perciò per la visualizzazione ho dovuto creare un’indicatore separato
+&lt;img src=&#34;https://example.com/post/blogpost---20250703/Pasted-image-20250703230057.png&#34;
+	width=&#34;2940&#34;
+	height=&#34;1912&#34;
+	srcset=&#34;https://example.com/post/blogpost---20250703/Pasted-image-20250703230057_hu_4c985eb955edc7ed.png 480w, https://example.com/post/blogpost---20250703/Pasted-image-20250703230057_hu_cc15e666cb8f771f.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pasted-image-20250703230057.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;369px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Per una migliore visualizzazione ho disattivato la visualizzazione del grafico, impostando il grafico ‘linea’ e poi selezionando il colore ‘none’ tramite le proprietà del grafico.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Siccome indicatore (visualizzatore) e strategia sono separati, non sarà possibile visualizzare il grafico Heikin Ashi modificato durante la simulazione del backtest.
+&lt;img src=&#34;https://example.com/post/blogpost---20250703/Pasted-image-20250703230509.png&#34;
+	width=&#34;2940&#34;
+	height=&#34;1912&#34;
+	srcset=&#34;https://example.com/post/blogpost---20250703/Pasted-image-20250703230509_hu_82492f4fc2720640.png 480w, https://example.com/post/blogpost---20250703/Pasted-image-20250703230509_hu_c1da521c3347a66c.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pasted-image-20250703230509.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;369px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;installazione-e-test&#34;&gt;Installazione e test
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Installazione su MacBook Air M3&lt;/strong&gt;: MT5 funziona perfettamente tramite Wine. Ho compilato l’EA in MetaEditor, l’ho caricato sul grafico EUR/USD (Heikin Ashi), impostato i parametri richiesti e attivato il trading algoritmico.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Backtest&lt;/strong&gt;: Ho testato la strategia tramite il tester di MT5, impostando capitale, leva, commissioni e condizioni identiche a quelle di TradingView. In questo modo ho potuto verificare la corrispondenza tra i risultati ottenuti sulle due piattaforme.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

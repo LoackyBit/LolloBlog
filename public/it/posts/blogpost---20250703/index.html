@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="it-IT" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Negli ultimi mesi ho affrontato una sfida tecnica molto interessante: portare una strategia di trading sviluppata originariamente in Pine Script su TradingView, denominata TrendBars Strategy, su MetaTrader 5 (MT5), trasformandola in un Expert Advisor (EA) completamente automatizzato e pronto all'uso su un conto reale.">
+<title>Da TradingView a MT5: Automazione della TrendBars Strategy su EUR/USD</title>
+
+<link rel='canonical' href='http://localhost:1313/it/posts/blogpost---20250703/'>
+
+<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="Da TradingView a MT5: Automazione della TrendBars Strategy su EUR/USD">
+<meta property='og:description' content="Negli ultimi mesi ho affrontato una sfida tecnica molto interessante: portare una strategia di trading sviluppata originariamente in Pine Script su TradingView, denominata TrendBars Strategy, su MetaTrader 5 (MT5), trasformandola in un Expert Advisor (EA) completamente automatizzato e pronto all'uso su un conto reale.">
+<meta property='og:url' content='http://localhost:1313/it/posts/blogpost---20250703/'>
+<meta property='og:site_name' content='LolloBlog'>
+<meta property='og:type' content='article'><meta property='article:section' content='It' /><meta property='article:tag' content='Trading' /><meta property='article:published_time' content='2025-07-02T22:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-07-02T22:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/it/posts/blogpost---20250703/Pasted-image-20250703230925.png' />
+<meta name="twitter:title" content="Da TradingView a MT5: Automazione della TrendBars Strategy su EUR/USD">
+<meta name="twitter:description" content="Negli ultimi mesi ho affrontato una sfida tecnica molto interessante: portare una strategia di trading sviluppata originariamente in Pine Script su TradingView, denominata TrendBars Strategy, su MetaTrader 5 (MT5), trasformandola in un Expert Advisor (EA) completamente automatizzato e pronto all'uso su un conto reale."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/it/posts/blogpost---20250703/Pasted-image-20250703230925.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/avatar_hu_5093f2aa7149e431.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💻</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">LolloBlog</a></h1>
+            <h2 class="site-description">Il mio blog di tecnologia e programmazione</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/LoackyBit'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/LoackyBit'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/it/page/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Cerca</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/page/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/page/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/it/page/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archivi</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" selected>Italiano</option>
+                                
+                                    <option value="http://localhost:1313/en/" >English</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/it/posts/blogpost---20250703/">
+                <img src="/it/posts/blogpost---20250703/Pasted-image-20250703230925_hu_65b97a4f68785d91.png"
+                        srcset="/it/posts/blogpost---20250703/Pasted-image-20250703230925_hu_65b97a4f68785d91.png 800w, /it/posts/blogpost---20250703/Pasted-image-20250703230925_hu_f805f4193b361128.png 1600w"
+                        width="800" 
+                        height="520" 
+                        loading="lazy"
+                        alt="Featured image of post Da TradingView a MT5: Automazione della TrendBars Strategy su EUR/USD" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/it/posts/blogpost---20250703/">Da TradingView a MT5: Automazione della TrendBars Strategy su EUR/USD</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Negli ultimi mesi ho affrontato una sfida tecnica molto interessante: portare una strategia di trading sviluppata originariamente in Pine Script su TradingView, denominata TrendBars Strategy, su MetaTrader 5 (MT5), trasformandola in un Expert Advisor (EA) completamente automatizzato e pronto all&#39;uso su un conto reale.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">02 lug 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 min per leggere
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="da-tradingview-a-mt5-il-contesto">Da TradingView a MT5: il contesto
+</h1><p>TradingView offre uno degli ambienti migliori per lo sviluppo e il test di strategie tramite Pine Script, ma ha dei limiti importanti:</p>
+<ul>
+<li>Non consente trading automatico diretto su conti reali.</li>
+<li>È più orientato all’analisi visuale che all’automazione.</li>
+</ul>
+<p>MetaTrader 5, invece, è la piattaforma di riferimento per il trading automatico su Forex e CFD, grazie alla sua flessibilità e alla possibilità di utilizzare Expert Advisor programmati in MQL5.</p>
+<h1 id="la-strategia-trendbars-su-base-ema-atr-e-hlc3">La Strategia: TrendBars su base EMA, ATR e HLC3
+</h1><p><img src="/it/posts/blogpost---20250703/Pasted-image-20250703230925.png"
+	width="2940"
+	height="1912"
+	srcset="/it/posts/blogpost---20250703/Pasted-image-20250703230925_hu_bd70e21a98b0a81.png 480w, /it/posts/blogpost---20250703/Pasted-image-20250703230925_hu_230383c32e4c506d.png 1024w"
+	loading="lazy"
+	
+		alt="Pasted-image-20250703230925.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="153"
+		data-flex-basis="369px"
+	
+></p>
+<p>La strategia TrendBars nasce da una semplice idea: colorare le barre in base alla deviazione della media HLC3 (media di High, Low e Close) rispetto a una EMA (media mobile esponenziale) dinamicamente &ldquo;ampliata&rdquo; da una banda di tolleranza calcolata tramite ATR (Average True Range) e un moltiplicatore.</p>
+<p>Le regole operative sono:</p>
+<ul>
+<li><strong>Long</strong> se HLC3 &gt; EMA + tolleranza</li>
+<li><strong>Short</strong> se HLC3 &lt; EMA - tolleranza</li>
+<li><strong>Flat/chiusura</strong> se HLC3 rientra nella banda neutrale tra EMA - tolleranza ed EMA + tolleranza</li>
+</ul>
+<p>Le uscite sono sempre &ldquo;a mercato&rdquo;, senza target o stop fisso.</p>
+<hr>
+<h1 id="specifiche-operative">Specifiche operative
+</h1><p>Per la mia applicazione pratica ho scelto:</p>
+<ul>
+<li><strong>Strumento:</strong> EUR/USD</li>
+<li><strong>Capitale iniziale:</strong> 1000 USD</li>
+<li><strong>Leva:</strong> 1:30</li>
+<li><strong>Volume fisso per operazione:</strong> 30000 USD (0.3 lotti standard su EUR/USD)</li>
+<li><strong>Commissione:</strong> 0,00006 USD per unità (da confrontare e adattare in base al broker MT5)</li>
+<li><strong>Margine massimo impegnato:</strong> 100% del capitale</li>
+<li><strong>Timeframe:</strong> 5m</li>
+<li><strong>Grafico:</strong> Heikin Ashi (come su TradingView)</li>
+<li><strong>Piattaforma:</strong> MT5 installato su MacBook Air M3 tramite Wine</li>
+</ul>
+<hr>
+<h1 id="la-conversione-da-pine-script-a-mql5">La conversione: da Pine Script a MQL5
+</h1><p><img src="/it/posts/blogpost---20250703/Pasted-image-20250703234720.png"
+	width="2940"
+	height="1912"
+	srcset="/it/posts/blogpost---20250703/Pasted-image-20250703234720_hu_8e83308d400b29d3.png 480w, /it/posts/blogpost---20250703/Pasted-image-20250703234720_hu_e8b02a728b8ed7e3.png 1024w"
+	loading="lazy"
+	
+		alt="Pasted-image-20250703234720.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="153"
+		data-flex-basis="369px"
+	
+></p>
+<h2 id="1-analisi-e-porting-della-logica">1. Analisi e porting della logica
+</h2><p>Ho analizzato il Pine Script originale, identificando i punti chiave:</p>
+<ul>
+<li>Calcolo EMA e ATR su dati regolari</li>
+<li>Calcolo HLC3 e condizioni di trend su dati Heikin Ashi</li>
+<li>Gestione dinamica della banda di tolleranza</li>
+<li>Selezione e visualizzazione colore barre</li>
+<li>Regole di ingresso/uscita e gestione delle posizioni</li>
+</ul>
+<h2 id="2-scrittura-dellexpert-advisor-in-mql5">2. Scrittura dell’Expert Advisor in MQL5
+</h2><p>Ho realizzato un EA che:</p>
+<ul>
+<li>Replica fedelmente la logica del Pine Script (incluso il calcolo di Heikin Ashi su OHLC standard, poiché su MT5 non esiste un vero e proprio grafico Heikin Ashi, ma un’indicatore a parte)</li>
+<li>Gestisce la dimensione fissa dell’ordine, espressa in percentuale rispetto al capitale, e verifica i requisiti di margine prima di ogni operazione</li>
+<li>Mostra sul grafico tutte le informazioni utili: trend, valori EMA, ATR, tolleranza, colore barra, stato posizioni, ecc.</li>
+<li>Consente di visualizzare la EMA colorata, le bande di tolleranza e tutte le condizioni di ingresso/uscita</li>
+</ul>
+<h2 id="3-adattamento-alle-condizioni-del-broker-mt5">3. Adattamento alle condizioni del broker MT5
+</h2><p>Essendo i parametri di marginazione e commissione diversi tra Capital.com (usato in TradingView) e il mio nuovo broker MT5, ho inserito nel codice la possibilità di modificare facilmente:</p>
+<ul>
+<li><strong>Commissione</strong></li>
+<li><strong>Calcolo del margine</strong></li>
+<li><strong>Dimensione minima/massima del lotto</strong></li>
+</ul>
+<h2 id="4-problemi-di-visualizzazione-su-mt5">4. Problemi di Visualizzazione su MT5
+</h2><ul>
+<li>
+<p>Innanzitutto non esiste la possibilità di visualizzare il grafico Heiken Ashi, se non tramite un indicatore.
+<img src="/it/posts/blogpost---20250703/Pasted-image-20250703225820.png"
+	width="1324"
+	height="690"
+	srcset="/it/posts/blogpost---20250703/Pasted-image-20250703225820_hu_c07abf67cc6663e4.png 480w, /it/posts/blogpost---20250703/Pasted-image-20250703225820_hu_904d8189211a5c0.png 1024w"
+	loading="lazy"
+	
+		alt="Pasted-image-20250703225820.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="191"
+		data-flex-basis="460px"
+	
+></p>
+</li>
+<li>
+<p>L’Expert Advisor che ho sviluppato non è in grado di disegnare a grafico le candele Heikin Ashi modificate, perciò per la visualizzazione ho dovuto creare un’indicatore separato
+<img src="/it/posts/blogpost---20250703/Pasted-image-20250703230057.png"
+	width="2940"
+	height="1912"
+	srcset="/it/posts/blogpost---20250703/Pasted-image-20250703230057_hu_4c985eb955edc7ed.png 480w, /it/posts/blogpost---20250703/Pasted-image-20250703230057_hu_cc15e666cb8f771f.png 1024w"
+	loading="lazy"
+	
+		alt="Pasted-image-20250703230057.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="153"
+		data-flex-basis="369px"
+	
+></p>
+<p>Per una migliore visualizzazione ho disattivato la visualizzazione del grafico, impostando il grafico ‘linea’ e poi selezionando il colore ‘none’ tramite le proprietà del grafico.</p>
+</li>
+<li>
+<p>Siccome indicatore (visualizzatore) e strategia sono separati, non sarà possibile visualizzare il grafico Heikin Ashi modificato durante la simulazione del backtest.
+<img src="/it/posts/blogpost---20250703/Pasted-image-20250703230509.png"
+	width="2940"
+	height="1912"
+	srcset="/it/posts/blogpost---20250703/Pasted-image-20250703230509_hu_82492f4fc2720640.png 480w, /it/posts/blogpost---20250703/Pasted-image-20250703230509_hu_c1da521c3347a66c.png 1024w"
+	loading="lazy"
+	
+		alt="Pasted-image-20250703230509.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="153"
+		data-flex-basis="369px"
+	
+></p>
+</li>
+</ul>
+<hr>
+<hr>
+<h2 id="installazione-e-test">Installazione e test
+</h2><p><strong>Installazione su MacBook Air M3</strong>: MT5 funziona perfettamente tramite Wine. Ho compilato l’EA in MetaEditor, l’ho caricato sul grafico EUR/USD (Heikin Ashi), impostato i parametri richiesti e attivato il trading algoritmico.</p>
+<p><strong>Backtest</strong>: Ho testato la strategia tramite il tester di MT5, impostando capitale, leva, commissioni e condizioni identiche a quelle di TradingView. In questo modo ho potuto verificare la corrispondenza tra i risultati ottenuti sulle due piattaforme.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/trading/">Trading</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 Lorenzo
+    </section>
+    
+    <section class="powerby">
+        
+            LolloBlog <br/>
+        Realizzato con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> realizzato da <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.87d558841f4d9dc4427e94e6843717e684f6539ce0607f0b9bf02b610982e6c1.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,47 +1,34 @@
 baseurl: https://example.com/
-languageCode: en-en
 theme: hugo-theme-stack
-title: LolloBlog
 copyright: Lorenzo
 
 # Theme i18n support
 # Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
-DefaultContentLanguage: en
+DefaultContentLanguage: it
 
 languages:
     it:
+        languageCode: it-IT
         languageName: Italiano
         title: LolloBlog
-        weight: 2
+        weight: 1
+        contentDir: content/it
         params:
             sidebar:
                 subtitle: Il mio blog di tecnologia e programmazione
     en:
+        languageCode: en-US
         languageName: English
         title: LolloBlog
-        weight: 1
+        weight: 2
+        contentDir: content/en
         params:
             sidebar:
                 subtitle: My technology and programming blog
 
-# services:
-#     # Change it to your Disqus shortname before using
-#     disqus:
-#         shortname: "hugo-theme-stack"
-#     # GA Tracking ID
-#     googleAnalytics:
-#         id:
-
-# pagination:
-#     pagerSize: 3
-
-# permalinks:
-#     post: /p/:slug/
-#     page: /:slug/
-
 params:
     mainSections:
-        - posts
+        - post
     featuredImageField: image
     rssFullContent: true
     favicon: # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
@@ -199,14 +186,7 @@ params:
 ### See https://stack.jimmycai.com/config/menu
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
-    main:
-        - identifier: home
-          name: Home
-          url: /
-          params:
-              icon: home
-          weight: 1
-
+    main: []
     social:
         - identifier: github
           name: GitHub

@@ -5,13 +5,22 @@
         <link>https://example.com/page/</link>
         <description>Recent content in Pages on LolloBlog</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
-        <copyright>Lorenzo</copyright><atom:link href="https://example.com/page/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Search</title>
-        <link>https://example.com/page/search/search/</link>
+        <language>it-IT</language>
+        <copyright>Lorenzo</copyright>
+        <lastBuildDate>Mon, 25 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Archivi</title>
+        <link>https://example.com/page/archives/</link>
+        <pubDate>Mon, 25 Aug 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://example.com/page/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Cerca</title>
+        <link>https://example.com/page/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/page/search/search/</guid>
+        <guid>https://example.com/page/search/</guid>
         <description></description>
         </item>
         
