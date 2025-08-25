@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lollo-blog.vercel.app/</loc>
-    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
+    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -15,8 +15,17 @@
                 href="https://lollo-blog.vercel.app/"
                 />
   </url><url>
+    <loc>https://lollo-blog.vercel.app/post/blogpost---20250825/</loc>
+    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lollo-blog.vercel.app/tags/macos/</loc>
+    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lollo-blog.vercel.app/tags/neovim/</loc>
+    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
+  </url><url>
     <loc>https://lollo-blog.vercel.app/post/</loc>
-    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
+    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -28,8 +37,14 @@
                 href="https://lollo-blog.vercel.app/post/"
                 />
   </url><url>
+    <loc>https://lollo-blog.vercel.app/tags/programmazione/</loc>
+    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lollo-blog.vercel.app/tags/python/</loc>
+    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
+  </url><url>
     <loc>https://lollo-blog.vercel.app/tags/</loc>
-    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
+    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -40,47 +55,6 @@
                 hreflang="it-IT"
                 href="https://lollo-blog.vercel.app/tags/"
                 />
-  </url><url>
-    <loc>https://lollo-blog.vercel.app/tags/test/</loc>
-    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://lollo-blog.vercel.app/en/tags/test/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="it-IT"
-                href="https://lollo-blog.vercel.app/tags/test/"
-                />
-  </url><url>
-    <loc>https://lollo-blog.vercel.app/post/test-post/</loc>
-    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://lollo-blog.vercel.app/en/post/test-post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="it-IT"
-                href="https://lollo-blog.vercel.app/post/test-post/"
-                />
-  </url><url>
-    <loc>https://lollo-blog.vercel.app/post/blogpost---20250825/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lollo-blog.vercel.app/tags/macos/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lollo-blog.vercel.app/tags/neovim/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lollo-blog.vercel.app/tags/programmazione/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lollo-blog.vercel.app/tags/python/</loc>
-    <lastmod>2025-08-25T18:46:00+00:00</lastmod>
   </url><url>
     <loc>https://lollo-blog.vercel.app/tags/terminale/</loc>
     <lastmod>2025-08-25T18:46:00+00:00</lastmod>

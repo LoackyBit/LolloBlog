@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lollo-blog.vercel.app/en/</loc>
-    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
+    <lastmod>2025-08-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="it-IT"
@@ -13,58 +13,6 @@
                 rel="alternate"
                 hreflang="en-US"
                 href="https://lollo-blog.vercel.app/en/"
-                />
-  </url><url>
-    <loc>https://lollo-blog.vercel.app/en/post/</loc>
-    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="it-IT"
-                href="https://lollo-blog.vercel.app/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://lollo-blog.vercel.app/en/post/"
-                />
-  </url><url>
-    <loc>https://lollo-blog.vercel.app/en/tags/</loc>
-    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="it-IT"
-                href="https://lollo-blog.vercel.app/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://lollo-blog.vercel.app/en/tags/"
-                />
-  </url><url>
-    <loc>https://lollo-blog.vercel.app/en/tags/test/</loc>
-    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="it-IT"
-                href="https://lollo-blog.vercel.app/tags/test/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://lollo-blog.vercel.app/en/tags/test/"
-                />
-  </url><url>
-    <loc>https://lollo-blog.vercel.app/en/post/test-post/</loc>
-    <lastmod>2025-08-25T20:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="it-IT"
-                href="https://lollo-blog.vercel.app/post/test-post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://lollo-blog.vercel.app/en/post/test-post/"
                 />
   </url><url>
     <loc>https://lollo-blog.vercel.app/en/page/archives/</loc>
@@ -98,6 +46,32 @@
   </url><url>
     <loc>https://lollo-blog.vercel.app/en/post/first-post/</loc>
     <lastmod>2025-06-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lollo-blog.vercel.app/en/post/</loc>
+    <lastmod>2025-06-13T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="it-IT"
+                href="https://lollo-blog.vercel.app/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://lollo-blog.vercel.app/en/post/"
+                />
+  </url><url>
+    <loc>https://lollo-blog.vercel.app/en/tags/</loc>
+    <lastmod>2025-06-13T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="it-IT"
+                href="https://lollo-blog.vercel.app/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://lollo-blog.vercel.app/en/tags/"
+                />
   </url><url>
     <loc>https://lollo-blog.vercel.app/en/tags/tutorial/</loc>
     <lastmod>2025-06-13T00:00:00+00:00</lastmod>
