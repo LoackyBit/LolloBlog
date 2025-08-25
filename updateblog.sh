@@ -26,6 +26,21 @@ if [ $? -ne 0 ]; then
     echo "Errore: Sincronizzazione con rsync fallita. Controlla i percorsi o installa rsync."
     exit 1
 fi
+
+# Rimuovi eventuali cartelle page bundle corrispondenti ai post draft
+echo "Rimozione cartelle page bundle per post draft..."
+while IFS= read -r draft_file; do
+    if [ -n "$draft_file" ]; then
+        # Ricava il nome del bundle dalla filename (rimuove .md)
+        bundle_name="${draft_file%.md}"
+        bundle_dir="$HUGO_POST_DIR/$bundle_name"
+        if [ -d "$bundle_dir" ]; then
+            rm -rf "$bundle_dir"
+            echo "🗑️  Removed draft bundle directory: $bundle_name"
+        fi
+    fi
+done < "$EXCLUDE_FILE"
+
 echo "Step 2 completato: Sincronizzazione terminata."
 
 # Step 3: Esegui lo script Python per sincronizzare markdown e immagini
