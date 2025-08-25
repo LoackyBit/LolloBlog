@@ -2,65 +2,65 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Tags on LolloBlog</title>
-        <link>https://example.com/tags/</link>
+        <link>http://localhost:1313/tags/</link>
         <description>Recent content in Tags on LolloBlog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>it-IT</language>
         <copyright>Lorenzo</copyright>
-        <lastBuildDate>Mon, 25 Aug 2025 18:46:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 25 Aug 2025 18:46:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Macos</title>
-        <link>https://example.com/tags/macos/</link>
+        <link>http://localhost:1313/tags/macos/</link>
         <pubDate>Mon, 25 Aug 2025 18:46:00 +0000</pubDate>
         
-        <guid>https://example.com/tags/macos/</guid>
+        <guid>http://localhost:1313/tags/macos/</guid>
         <description></description>
         </item>
         <item>
         <title>Neovim</title>
-        <link>https://example.com/tags/neovim/</link>
+        <link>http://localhost:1313/tags/neovim/</link>
         <pubDate>Mon, 25 Aug 2025 18:46:00 +0000</pubDate>
         
-        <guid>https://example.com/tags/neovim/</guid>
+        <guid>http://localhost:1313/tags/neovim/</guid>
         <description></description>
         </item>
         <item>
         <title>Programmazione</title>
-        <link>https://example.com/tags/programmazione/</link>
+        <link>http://localhost:1313/tags/programmazione/</link>
         <pubDate>Mon, 25 Aug 2025 18:46:00 +0000</pubDate>
         
-        <guid>https://example.com/tags/programmazione/</guid>
+        <guid>http://localhost:1313/tags/programmazione/</guid>
         <description></description>
         </item>
         <item>
         <title>Python</title>
-        <link>https://example.com/tags/python/</link>
+        <link>http://localhost:1313/tags/python/</link>
         <pubDate>Mon, 25 Aug 2025 18:46:00 +0000</pubDate>
         
-        <guid>https://example.com/tags/python/</guid>
+        <guid>http://localhost:1313/tags/python/</guid>
         <description></description>
         </item>
         <item>
         <title>Terminale</title>
-        <link>https://example.com/tags/terminale/</link>
+        <link>http://localhost:1313/tags/terminale/</link>
         <pubDate>Mon, 25 Aug 2025 18:46:00 +0000</pubDate>
         
-        <guid>https://example.com/tags/terminale/</guid>
+        <guid>http://localhost:1313/tags/terminale/</guid>
         <description></description>
         </item>
         <item>
         <title>Vim</title>
-        <link>https://example.com/tags/vim/</link>
+        <link>http://localhost:1313/tags/vim/</link>
         <pubDate>Mon, 25 Aug 2025 18:46:00 +0000</pubDate>
         
-        <guid>https://example.com/tags/vim/</guid>
+        <guid>http://localhost:1313/tags/vim/</guid>
         <description></description>
         </item>
         <item>
         <title>Trading</title>
-        <link>https://example.com/tags/trading/</link>
+        <link>http://localhost:1313/tags/trading/</link>
         <pubDate>Wed, 02 Jul 2025 22:00:00 +0000</pubDate>
         
-        <guid>https://example.com/tags/trading/</guid>
+        <guid>http://localhost:1313/tags/trading/</guid>
         <description></description>
         </item>
         

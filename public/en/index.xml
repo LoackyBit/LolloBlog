@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>LolloBlog</title>
-        <link>https://example.com/en/</link>
+        <link>http://localhost:1313/en/</link>
         <description>Recent content on LolloBlog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-US</language>
         <copyright>Lorenzo</copyright>
-        <lastBuildDate>Mon, 25 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/en/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 25 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Archives</title>
-        <link>https://example.com/en/page/archives/</link>
+        <link>http://localhost:1313/en/page/archives/</link>
         <pubDate>Mon, 25 Aug 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/en/page/archives/</guid>
+        <guid>http://localhost:1313/en/page/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>How I Built My Blog with Hugo and the Stack Theme</title>
-        <link>https://example.com/en/post/first-post/</link>
+        <link>http://localhost:1313/en/post/first-post/</link>
         <pubDate>Fri, 13 Jun 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/en/post/first-post/</guid>
-        <description>&lt;img src="https://example.com/en/post/first-post/Pasted-image-20250613120635.png" alt="Featured image of post How I Built My Blog with Hugo and the Stack Theme" /&gt;&lt;h1 id=&#34;how-i-built-my-blog-with-hugo-and-the-stack-theme&#34;&gt;How I Built My Blog with Hugo and the Stack Theme
+        <guid>http://localhost:1313/en/post/first-post/</guid>
+        <description>&lt;img src="http://localhost:1313/en/post/first-post/Pasted-image-20250613120635.png" alt="Featured image of post How I Built My Blog with Hugo and the Stack Theme" /&gt;&lt;h1 id=&#34;how-i-built-my-blog-with-hugo-and-the-stack-theme&#34;&gt;How I Built My Blog with Hugo and the Stack Theme
 &lt;/h1&gt;&lt;p&gt;Hello everyone! In this post, I’ll share how I built my blog using &lt;strong&gt;Obsidian&lt;/strong&gt;, &lt;strong&gt;Hugo&lt;/strong&gt;, &lt;strong&gt;GitHub&lt;/strong&gt;, and &lt;strong&gt;Hostinger&lt;/strong&gt;, following a tutorial by NetworkChuck and customizing it with the &lt;strong&gt;Stack&lt;/strong&gt; theme (&lt;a class=&#34;link&#34; href=&#34;https://stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://stack.jimmycai.com/&lt;/a&gt;). I’ll also guide you through configuring the Stack theme to create a sleek and functional blog.&lt;/p&gt;
 &lt;h2 id=&#34;why-a-blog&#34;&gt;Why a Blog?
@@ -208,10 +208,10 @@ theme = &amp;#34;hugo-theme-stack&amp;#34;
         </item>
         <item>
         <title>Search</title>
-        <link>https://example.com/en/page/search/</link>
+        <link>http://localhost:1313/en/page/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://example.com/en/page/search/</guid>
+        <guid>http://localhost:1313/en/page/search/</guid>
         <description></description>
         </item>
         
